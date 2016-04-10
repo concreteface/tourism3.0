@@ -10,10 +10,12 @@
 # end
 
 CarrierWave.configure do |config|
-  config.fog_credentials = {
-    provider:                         'Google',
-    google_storage_access_key_id:     ENV["GOOGLE_ID"]
-    google_storage_secret_access_key: ENV["GOOGLE_KEY"]
-  }
-  config.fog_directory = 'tourismproduction'
+  if !Rails.env.test?
+    config.fog_credentials = {
+      provider:                         'Google',
+      google_storage_access_key_id:     ENV["GOOGLE_ID"],
+      google_storage_secret_access_key: ENV["GOOGLE_KEY"]
+    }
+    config.fog_directory = 'tourismproduction'
+  end
 end

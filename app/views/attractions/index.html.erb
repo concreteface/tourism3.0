@@ -1,0 +1,13 @@
+<h2>Places and Things</h2>
+<ul>
+  <% @attractions.each do |a| %>
+    <li>
+      <div>
+        <%= a.name %>
+      </div>
+      <div>
+        <img src="<%= a.photo_url %>", height='500' width='500'>
+      </div>
+    </li>
+  <% end %>
+</ul>
