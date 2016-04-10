@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
+gem "fog-google"
+gem "google-api-client"
+gem "mime-types"
 gem 'fog'
 gem 'carrierwave'
 
