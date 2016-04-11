@@ -41,6 +41,10 @@ feature 'authenticated user can add attraction' do
     visit root_path
     
     expect(page).not_to have_selector(:link, 'Add Photo')
+
+    visit new_attraction_path
+
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 
 end
