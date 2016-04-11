@@ -14,3 +14,4 @@
 .env
 /public/uploads
 google_key.json
+/coverage
