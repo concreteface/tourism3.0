@@ -11,3 +11,6 @@
     </li>
   <% end %>
 </ul>
+<% if user_signed_in? %>
+  <%= link_to("Add Photo", new_attraction_path) %>
+<% end %>
