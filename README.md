@@ -1,3 +1,7 @@
+![Build Status](https://codeship.com/projects/5621fb20-e26d-0133-a2de-0229a9d1976f/status?branch=master)
+[![Code Climate](https://codeclimate.com/github/concreteface/tourism3.0/badges/gpa.svg)](https://codeclimate.com/github/concreteface/tourism3.0)
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
