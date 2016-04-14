@@ -48,6 +48,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'coveralls', require: false
   gem 'launchy'
+  gem 'simplecov'
 end
 
 group :development do
