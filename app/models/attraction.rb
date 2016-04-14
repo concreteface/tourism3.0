@@ -2,6 +2,8 @@ class Attraction < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
   belongs_to :creator, class_name: "User", foreign_key: :creator_id
+  has_many :visitors, class_name: 'User', through: :visits
+  has_many :visits
   validates :name, presence: true, uniqueness: true
   # validates :photo, presence: true
 
