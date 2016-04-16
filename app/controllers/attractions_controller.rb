@@ -3,7 +3,10 @@ class AttractionsController < ApplicationController
 
   def index
     @attractions = Attraction.all
-    gon.user = current_user
+    if current_user
+      gon.user = current_user
+      @visited_attractions = current_user.visited_attractions.pluck(:id)
+    end
     # @comments = Attraction.comments
   end
 
@@ -32,5 +35,4 @@ class AttractionsController < ApplicationController
   def attraction_params
     params.require(:attraction).permit(:name, :photo, :description)
   end
-
 end
