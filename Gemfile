@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem 'gon'
 
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -50,6 +51,8 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'launchy'
   gem 'simplecov'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do

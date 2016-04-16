@@ -1,5 +1,7 @@
 require 'coveralls'
+require 'capybara/poltergeist'
 Coveralls.wear!('rails')
+Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
 
