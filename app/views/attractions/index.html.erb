@@ -8,6 +8,11 @@
       <div>
         <img src="<%= a.photo_url %>", height='500' width='500'>
       </div>
+      <% if user_signed_in? %>
+      <div>
+        <button name="visited" class='visited button'>Been There</button>
+      </div>
+      <% end %>
     </li>
   <% end %>
 </ul>

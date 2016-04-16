@@ -27,6 +27,7 @@ gem "google-api-client"
 gem "mime-types"
 gem 'fog'
 gem 'carrierwave'
+gem 'gon'
 
 
 # Use ActiveModel has_secure_password
