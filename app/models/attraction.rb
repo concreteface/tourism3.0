@@ -4,8 +4,9 @@ class Attraction < ActiveRecord::Base
   belongs_to :creator, class_name: "User", foreign_key: :creator_id
   has_many :visitors, class_name: 'User', through: :visits
   has_many :visits
+  has_many :comments
   validates :name, presence: true, uniqueness: true
-  # validates :photo, presence: true
+  validates :photo, presence: true
 
   def add_photo(file_location)
     File.open(file_location) do |file|

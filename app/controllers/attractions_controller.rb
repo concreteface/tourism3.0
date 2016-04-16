@@ -3,6 +3,8 @@ class AttractionsController < ApplicationController
 
   def index
     @attractions = Attraction.all
+    gon.user = current_user
+    # @comments = Attraction.comments
   end
 
   def show
