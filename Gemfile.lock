@@ -94,6 +94,7 @@ GEM
     erubis (2.7.0)
     excon (0.49.0)
     execjs (2.6.0)
+    exifr (1.2.4)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.6.0)
@@ -442,6 +443,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  exifr
   factory_girl_rails
   fog
   fog-google

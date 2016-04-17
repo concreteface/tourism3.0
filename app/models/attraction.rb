@@ -1,3 +1,5 @@
+require 'exifr'
+
 class Attraction < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
@@ -13,5 +15,13 @@ class Attraction < ActiveRecord::Base
       self.photo = file
     end
     save!
+  end
+
+  def self.get_latitude(file_name)
+    EXIFR::JPEG.new(file_name).gps.latitude
+  end
+
+  def self.get_longitude(file_name)
+    EXIFR::JPEG.new(file_name).gps.longitude
   end
 end

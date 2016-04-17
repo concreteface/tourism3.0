@@ -24,8 +24,9 @@ var addComment = function(body, attraction, toAppend) {
   request.done(function(data) {
     if (data.message == 'success') {
       toAppend.append("<div>" + gon.user.username + "</div>" + "<div>" + body + "</div>")
+      body = '';
     } else {
-      alert('nope')
+      alert('Write Something Before You Press That Button!')
     }
   });
 }

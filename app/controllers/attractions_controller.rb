@@ -7,7 +7,6 @@ class AttractionsController < ApplicationController
       gon.user = current_user
       @visited_attractions = current_user.visited_attractions.pluck(:id)
     end
-    # @comments = Attraction.comments
   end
 
   def show

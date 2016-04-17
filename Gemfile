@@ -28,6 +28,7 @@ gem "mime-types"
 gem 'fog'
 gem 'carrierwave'
 gem 'gon'
+gem 'exifr'
 
 
 
