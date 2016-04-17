@@ -23,14 +23,20 @@
           </div>
         <% end %>
       </div>
-      <div>
-        <%= form_tag("/comments", method: "post", class: 'c_form') do %>
-          <%= hidden_field_tag :attraction_id , a.id %>
-          <%= hidden_field_tag :user_id , current_user.id %>
-          <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
-          <%= submit_tag "Comment", class: 'tiny button' %>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div>
+          <%= form_tag("/comments", method: "post", class: 'c_form') do %>
+            <%= hidden_field_tag :attraction_id , a.id %>
+            <%= hidden_field_tag :user_id , current_user.id %>
+            <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
+            <%= submit_tag "Comment", class: 'tiny button' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div>
+          <h7>Sign in to Comment!</h7>
+        </div>
+      <% end %>
     </li>
   <% end %>
 </ul>

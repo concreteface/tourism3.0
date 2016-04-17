@@ -14,6 +14,7 @@ var addComment = function(body, attraction, toAppend) {
     attraction_id: attraction,
     user_id: gon.user.id
   }
+
   var request = $.ajax({
     method: 'POST',
     url: '/comments',
@@ -24,8 +25,7 @@ var addComment = function(body, attraction, toAppend) {
     if (data.message == 'success') {
       toAppend.append("<div>" + gon.user.username + "</div>" + "<div>" + body + "</div>")
     } else {
-    	alert('nope')
+      alert('nope')
     }
-  })
-
+  });
 }
