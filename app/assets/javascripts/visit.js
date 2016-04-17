@@ -6,14 +6,15 @@ $(function() {
 })
 
 var getAttractionId = function(input) {
-  var str = input.parentElement.parentElement.firstElementChild.nextElementSibling.innerHTML
+  var str = $(input).parent().siblings()[1].innerHTML
   var reg = /\/\d+\//;
   var array = reg.exec(str)
   return (array[0].split('/')[1])
 }
 
-var addVisit = function(attrStr) {
-  var attractionId = getAttractionId(attrStr);
+var addVisit = function(element) {
+  var toRemove = element
+  var attractionId = getAttractionId(element);
   var userId = gon.user.id;
   var visitParams = {
     user_id: userId,
@@ -28,12 +29,9 @@ var addVisit = function(attrStr) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      alert('you did it')
+      toRemove.remove();
     } else {
-      alert('something went wrong')
+      alert('Something went wrong...contact site administrator.')
     }
-
-
   });
-
 };

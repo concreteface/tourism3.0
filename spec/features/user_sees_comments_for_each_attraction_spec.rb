@@ -18,7 +18,7 @@ feature 'user can read and leave comments on attraction index page' do
     login_as(@user)
     visit '/'
 
-    fill_in :placeholder => "Leave a Comment", :with => "This picture is OK squared!"
+    fill_in "Leave a Comment", with: "This picture is OK squared!"
     expect(page).to have_content(@comment.body)
     click_on 'Comment'
 
@@ -27,6 +27,9 @@ feature 'user can read and leave comments on attraction index page' do
     expect(page).to have_content('This picture is OK squared!')
   end
 
+  scenario 'unauthenticated user can\'t leave a comment' do
 
+    visit '/'
 
+  end
 end

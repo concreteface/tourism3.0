@@ -7,10 +7,14 @@ require 'rspec/rails'
 require 'capybara/rails'
 include Warden::Test::Helpers
 Warden.test_mode!
-
 ActiveRecord::Migration.maintain_test_schema!
 
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false)
+end
+
 RSpec.configure do |config|
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = false

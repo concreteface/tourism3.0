@@ -9,10 +9,20 @@
         <img src="<%= a.photo_url %>", height='500' width='500'>
       </div>
       <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
-      <div>
-        <button name="visited" class='visited button'>Been There</button>
-      </div>
+        <div>
+          <button name="visited" class='visited button'>Been There</button>
+        </div>
       <% end %>
+      <div>
+        <% a.comments.each do |c| %>
+          <div>
+            <%= c.user.username %>
+          </div>
+          <div>
+            <%= c.body %>
+          </div>
+        <% end %>
+      </div>
     </li>
   <% end %>
 </ul>
