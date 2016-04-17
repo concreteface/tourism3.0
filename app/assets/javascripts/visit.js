@@ -5,7 +5,7 @@ $(function() {
   });
 })
 
-var getAttractionId = function(input) {
+var getAttractionId = function(input) { 
   var str = $(input).parent().siblings()[1].innerHTML
   var reg = /\/\d+\//;
   var array = reg.exec(str)
@@ -35,3 +35,4 @@ var addVisit = function(element) {
     }
   });
 };
+

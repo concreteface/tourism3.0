@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :visits, only: [:create]
+  resources :comments, only: [:create]
 
 end

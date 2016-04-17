@@ -10,7 +10,7 @@
       </div>
       <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
         <div>
-          <button name="visited" class='visited button'>Been There</button>
+          <button name="visited" class='visited small button'>Been There</button>
         </div>
       <% end %>
       <div>
@@ -21,6 +21,14 @@
           <div>
             <%= c.body %>
           </div>
+        <% end %>
+      </div>
+      <div>
+        <%= form_tag("/comments", method: "post", class: 'c_form') do %>
+          <%= hidden_field_tag :attraction_id , a.id %>
+          <%= hidden_field_tag :user_id , current_user.id %>
+          <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
+          <%= submit_tag "Comment", class: 'tiny button' %>
         <% end %>
       </div>
     </li>

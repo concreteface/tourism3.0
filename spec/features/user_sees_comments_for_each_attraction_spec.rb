@@ -19,6 +19,7 @@ feature 'user can read and leave comments on attraction index page' do
     visit '/'
 
     fill_in "Leave a Comment", with: "This picture is OK squared!"
+    # find('#comment')['Leave a Comment']
     expect(page).to have_content(@comment.body)
     click_on 'Comment'
 
