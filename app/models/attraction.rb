@@ -9,6 +9,7 @@ class Attraction < ActiveRecord::Base
   has_many :comments
   validates :name, presence: true, uniqueness: true
   validates :photo, presence: true
+  before_save :extract_geolocation
 
   def add_photo(file_location)
     File.open(file_location) do |file|
@@ -17,11 +18,17 @@ class Attraction < ActiveRecord::Base
     save!
   end
 
-  def self.get_latitude(file_name)
-    EXIFR::JPEG.new(file_name).gps.latitude
+  def extract_geolocation
+    img = photo_url
+    self.latitude = get_latitude(img)
+    self.longitude = get_longitude(img)
   end
 
-  def self.get_longitude(file_name)
-    EXIFR::JPEG.new(file_name).gps.longitude
+  def get_latitude(file_name)
+    EXIFR::JPEG.new(file_name).gps.latitude rescue nil
+  end
+
+  def get_longitude(file_name)
+    EXIFR::JPEG.new(file_name).gps.longitude rescue nil
   end
 end

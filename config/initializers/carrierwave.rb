@@ -10,6 +10,7 @@
 # end
 
 CarrierWave.configure do |config|
+  config.cache_dir = '/tmp'
   if !Rails.env.test?
     config.fog_credentials = {
       provider:                         'Google',
