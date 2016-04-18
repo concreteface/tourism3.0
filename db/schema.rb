@@ -11,30 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416195242) do
+ActiveRecord::Schema.define(version: 20160418005426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attractions", force: :cascade do |t|
-    t.string  "name",        null: false
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "creator_id",  null: false
-    t.string  "photo"
-    t.string  "description"
+    t.string   "name",        null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "creator_id",  null: false
+    t.string   "photo"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id",       null: false
-    t.integer "attraction_id", null: false
-    t.text    "body",          null: false
+    t.integer  "user_id",       null: false
+    t.integer  "attraction_id", null: false
+    t.text     "body",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "rating",        null: false
-    t.integer "attraction_id", null: false
-    t.integer "user_id"
+    t.integer  "rating",        null: false
+    t.integer  "attraction_id", null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,8 +64,10 @@ ActiveRecord::Schema.define(version: 20160416195242) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "visits", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "attraction_id"
+    t.integer  "user_id"
+    t.integer  "attraction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
