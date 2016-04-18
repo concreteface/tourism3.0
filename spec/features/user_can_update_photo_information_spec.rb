@@ -26,4 +26,17 @@ feature 'user can update photo title and description' do
 
     expect(page).not_to have_selector(:link, 'Edit')
   end
+
+  scenario 'user who submits invalid form' do
+    login_as(@user)
+    visit attraction_path(@attraction)
+
+    expect(page).to have_content("It's been there a while")
+
+    click_link 'Edit'
+    fill_in 'Name', with: ""
+    click_button 'Submit'
+
+    expect(page).to have_content("Name can't be blank")
+  end
 end
