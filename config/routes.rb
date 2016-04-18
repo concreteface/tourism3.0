@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'now_using', to: "users#now_using"
 
 
-  resources :attractions, only: [:index, :show, :create, :new]
+  resources :attractions
 
   resources :visits, only: [:create]
   resources :comments, only: [:create]

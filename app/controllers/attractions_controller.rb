@@ -38,6 +38,21 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    if @attraction.update(attraction_params)
+      flash[:notice] = 'You updated your photo details'
+      redirect_to attraction_path(@attraction)
+    else
+      flash[:alert] = @attraction.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
   private
 
   def attraction_params

@@ -6,8 +6,11 @@
 </div>
 <div>
   <%= @attraction.description %>
+  <% if @attraction.creator == current_user %>
+  <%= link_to 'Edit', edit_attraction_path(@attraction) %>
+  <% end %>
 </div>
 <div>
   <iframe width="600" height="450" frameborder="0" style="border:0" src='<%= @iframe_source %>' id='map' allowfullscreen></iframe>
 </div>
-<%= link_to "Main Page", root_path %>
+<%= link_to("Main Page", root_path) %>
