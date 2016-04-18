@@ -1,44 +1,47 @@
+<div class='small-12 large-6 float small-centered'>
 <h2>Places and Things</h2>
+</div>
 <ul>
   <% @attractions.each do |a| %>
-    <li>
-      <div>
-        <%= a.name %>
-      </div>
-      <div>
-        
-      <%= link_to image_tag("#{a.photo_url}", size: '500x500'), a %>
-      </div>
-      <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
+    <div class='small-12 large-6 float small-centered'>
+      
         <div>
-          <button name="visited" class='visited small button'>Been There</button>
+          <%= a.name %>
         </div>
-      <% end %>
-      <div>
-        <% a.comments.each do |c| %>
+        <div>
+          <%= link_to image_tag("#{a.photo_url}", size: '500x500'), a %>
+        </div>
+        <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
           <div>
-            <%= c.user.username %>
-          </div>
-          <div>
-            <%= c.body %>
+            <button name="visited" class='visited small button'>Been There</button>
           </div>
         <% end %>
-      </div>
-      <% if user_signed_in? %>
         <div>
-          <%= form_tag("/comments", method: "post", class: 'c_form') do %>
-            <%= hidden_field_tag :attraction_id , a.id %>
-            <%= hidden_field_tag :user_id , current_user.id %>
-            <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
-            <%= submit_tag "Comment", class: 'tiny button' %>
+          <% a.comments.each do |c| %>
+            <div>
+              <%= c.user.username %>
+            </div>
+            <div>
+              <%= c.body %>
+            </div>
           <% end %>
         </div>
-      <% else %>
-        <div>
-          <h7>Sign in to Comment!</h7>
-        </div>
-      <% end %>
-    </li>
+        <% if user_signed_in? %>
+          <div>
+            <%= form_tag("/comments", method: "post", class: 'c_form') do %>
+              <%= hidden_field_tag :attraction_id , a.id %>
+              <%= hidden_field_tag :user_id , current_user.id %>
+              <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
+              <%= submit_tag "Comment", class: 'tiny button' %>
+            <% end %>
+          </div>
+        <% else %>
+          <div>
+            <h7>Sign in to Comment!</h7>
+          </div>
+        <% end %>
+      
+    </div>
   <% end %>
 </ul>
 <% if user_signed_in? %>

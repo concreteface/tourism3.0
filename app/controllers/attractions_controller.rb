@@ -11,6 +11,15 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
+    @key = ENV['MAPS_KEY']
+    @base_url = 'https://www.google.com/maps/embed/v1/view'
+    if @attraction.latitude
+      @lat = @attraction.latitude
+      @long = @attraction.longitude
+      @src = "#{@base_url}?key=#{@key}&center=#{@lat},#{@long}&zoom=17"
+    else
+      @src = "#{@base_url}?key=#{@key}&center=39.8282,-98.5795"
+    end
   end
 
   def new

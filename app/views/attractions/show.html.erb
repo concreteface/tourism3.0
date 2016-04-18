@@ -1,7 +1,13 @@
-
-
-<img src="<%= @attraction.photo_url %>" height='700' width='700'>
-<%= @attraction.name %>
-<%= @attraction.description %>
-
+<div>
+  <img src="<%= @attraction.photo_url %>" height='700' width='700'>
+</div>
+<div>
+  <%= @attraction.name %>
+</div>
+<div>
+  <%= @attraction.description %>
+</div>
+<div>
+  <iframe width="600" height="450" frameborder="0" style="border:0" src='<%= @src %>' allowfullscreen></iframe>
+</div>
 <%= link_to "Main Page", root_path %>
