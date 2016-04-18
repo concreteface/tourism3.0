@@ -5,7 +5,7 @@ $(function() {
   });
 })
 
-var getAttractionId = function(input) { 
+var getAttractionId = function(input) {
   var str = $(input).parent().siblings()[1].innerHTML
   var reg = /\/\d+\//;
   var array = reg.exec(str)
@@ -29,10 +29,11 @@ var addVisit = function(element) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      toRemove.remove();
+      $(toRemove).hide(200, function() {
+        $(this).remove();
+      });
     } else {
       alert('Something went wrong...contact site administrator.')
     }
   });
 };
-

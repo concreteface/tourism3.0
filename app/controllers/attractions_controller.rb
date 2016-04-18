@@ -2,7 +2,7 @@ class AttractionsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @attractions = Attraction.all
+    @attractions = Attraction.order(created_at: :desc)
     if current_user
       gon.user = current_user
       @visited_attractions = current_user.visited_attractions.pluck(:id)
@@ -16,9 +16,9 @@ class AttractionsController < ApplicationController
     if @attraction.latitude
       @lat = @attraction.latitude
       @long = @attraction.longitude
-      @src = "#{@base_url}?key=#{@key}&center=#{@lat},#{@long}&zoom=17"
+      @iframe_source = "#{@base_url}?key=#{@key}&center=#{@lat},#{@long}&zoom=17"
     else
-      @src = "#{@base_url}?key=#{@key}&center=39.8282,-98.5795"
+      @iframe_source = "#{@base_url}?key=#{@key}&center=39.8282,-98.5795"
     end
   end
 
