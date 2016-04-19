@@ -20,8 +20,10 @@ class Attraction < ActiveRecord::Base
 
   def extract_geolocation
     img = photo_url
-    self.latitude = get_latitude(img)
-    self.longitude = get_longitude(img)
+    if get_latitude(img) != nil
+      self.latitude = get_latitude(img)
+      self.longitude = get_longitude(img)
+    end
   end
 
   def get_latitude(file_name)
