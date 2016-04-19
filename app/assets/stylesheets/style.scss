@@ -1,0 +1,25 @@
+.centered {
+    margin: 0 auto;
+}
+
+#parent {
+    text-align:center;
+
+}
+.block {
+    height:100px;
+    width:200px;
+    text-align:left;
+}
+.center {
+    margin:auto;
+    background-color:green;
+}
+.left {
+    margin:auto auto auto 0;
+    background-color:red;
+}
+.right {
+    margin:auto 0 auto auto;
+    background-color:yellow;
+}

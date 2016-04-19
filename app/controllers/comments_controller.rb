@@ -14,9 +14,7 @@ class CommentsController < ApplicationController
 
 
   def js_delete
-    binding.pry
-    # @comment = Comment.find_by(body: params[:body_string])
-    @comment = Comment.find(conditions: ["body=? and user=?", params[:body_string], current_user])
+    @comment = Comment.find_by(body: params['body_string'], user: current_user)
     @comment.destroy
     render json: {message: 'success'}
   end

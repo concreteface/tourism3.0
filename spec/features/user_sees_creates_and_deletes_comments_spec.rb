@@ -14,8 +14,8 @@ feature 'user can read and leave comments on attraction index page', js: true do
     expect(page).to have_content(@comment.body)
   end
 
-  scenario 'authenticated user can leave a comment', js: true do
-  	@attraction = FactoryGirl.create(:attraction)
+  scenario 'authenticated user can leave a comment' do
+    @attraction = FactoryGirl.create(:attraction)
     login_as(@user)
     visit '/'
 
@@ -24,9 +24,21 @@ feature 'user can read and leave comments on attraction index page', js: true do
     expect(page).to have_content('This picture is OK squared!')
   end
 
-  # scenario 'unauthenticated user can\'t leave a comment' do
+  scenario 'unauthenticated user can\'t leave a comment' do
 
-  #   visit '/'
+    visit '/'
+    expect(page).to have_no_css('#body')
 
-  # end
+  end
+
+  scenario 'authenticated user can delete their own comment' do
+    @attraction = FactoryGirl.create(:attraction)
+    @comment = FactoryGirl.create(:comment, user: @user)
+    login_as(@user)
+    visit '/'
+
+    expect(page).to have_content(@comment.body)
+    click_button 'Delete'
+    expect(page).not_to have_content(@comment.body)
+  end
 end
