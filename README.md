@@ -2,6 +2,8 @@
 [![Code Climate](https://codeclimate.com/github/concreteface/tourism3.0/badges/gpa.svg)](https://codeclimate.com/github/concreteface/tourism3.0)
 [![Coverage Status](https://coveralls.io/repos/github/concreteface/tourism3.0/badge.svg?branch=master)](https://coveralls.io/github/concreteface/tourism3.0?branch=master)
 
+[Track my progress...if you dare.](http://t3p0.herokuapp.com/)
+
 
 == README
 
