@@ -1,5 +1,5 @@
 $(function() {
-  $('.delete').click(function(event) {
+  $(document).on('click','.delete', function(event) {
     event.preventDefault();
     var body = $(this).parent();
     var user = $(this).parent().prev();
