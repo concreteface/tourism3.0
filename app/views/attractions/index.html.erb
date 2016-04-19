@@ -19,6 +19,8 @@
           <% a.comments.each do |c| %>
             <div>
               <%= c.user.username %>
+              <div class='hidden' id='<%= c.id %>'>
+              </div>
             </div>
             <div>
               <%= c.body %>

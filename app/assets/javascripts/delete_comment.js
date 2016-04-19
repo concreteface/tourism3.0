@@ -3,14 +3,14 @@ $(function() {
     event.preventDefault();
     var body = $(this).parent();
     var user = $(this).parent().prev();
-    var toDelete = $(this).parent().text().replace('Delete', '').trim()
+    var toDelete = $(this).parent().prev().children().attr('id')
     deleteComment(body, user, toDelete);
   });
 })
 
-var deleteComment = function(body, user, commentBody) {
+var deleteComment = function(body, user, id) {
   var deleteParams = {
-    body_string: commentBody
+    comment_id: id
   };
 
   var request = $.ajax({

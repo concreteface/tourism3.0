@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
 
   def js_delete
-    @comment = Comment.find_by(body: params['body_string'], user: current_user)
+    @comment = Comment.find(params['comment_id'])
     @comment.destroy
     render json: {message: 'success'}
   end
