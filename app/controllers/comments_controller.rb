@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      render json: {message: 'success'}
+      render json: {message: 'success', id: @comment.id}
     else
       render json: {message: 'failure'}
     end
