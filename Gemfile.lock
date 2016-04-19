@@ -299,6 +299,7 @@ GEM
     orm_adapter (0.5.0)
     os (0.9.6)
     pg (0.18.4)
+    phantomjs (2.1.1.0)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -455,6 +456,7 @@ DEPENDENCIES
   launchy
   mime-types
   pg (~> 0.15)
+  phantomjs
   poltergeist
   pry-rails
   rails (= 4.2.6)

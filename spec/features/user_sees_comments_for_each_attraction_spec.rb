@@ -14,16 +14,15 @@ feature 'user can read and leave comments on attraction index page', js: true do
     expect(page).to have_content(@comment.body)
   end
 
-  # scenario 'authenticated user can leave a comment' do
-  # 	@attraction = FactoryGirl.create(:attraction)
-  #   login_as(@user)
-  #   visit '/'
+  scenario 'authenticated user can leave a comment', js: true do
+  	@attraction = FactoryGirl.create(:attraction)
+    login_as(@user)
+    visit '/'
 
-  #   fill_in "Leave a Comment", with: "This picture is OK squared!"
-  #   click_on 'Comment'
-  #   # page.reset!
-  #   expect(page).to have_content('This picture is OK squared!')
-  # end
+    fill_in "Leave a Comment", with: "This picture is OK squared!"
+    click_on 'Comment'
+    expect(page).to have_content('This picture is OK squared!')
+  end
 
   # scenario 'unauthenticated user can\'t leave a comment' do
 
