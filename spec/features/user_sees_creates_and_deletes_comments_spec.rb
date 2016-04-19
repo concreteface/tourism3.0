@@ -24,9 +24,21 @@ feature 'user can read and leave comments on attraction index page', js: true do
     expect(page).to have_content('This picture is OK squared!')
   end
 
+  scenario 'authenticated submits blank form' do
+    @attraction = FactoryGirl.create(:attraction)
+    login_as(@user)
+    visit '/'
+
+    message = accept_prompt do
+      click_on 'Comment'
+    end
+    expect(message).to eq('Write Something Before You Press That Button!')
+
+  end
+
   scenario 'unauthenticated user can\'t leave a comment' do
 
-    visit '/'
+    visit '/' 
     expect(page).to have_no_css('#body')
 
   end

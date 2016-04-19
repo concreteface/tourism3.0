@@ -53,7 +53,7 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'poltergeist'
-  gem 'phantomjs', require: 'phantomjs/poltergeist'
+  gem 'phantomjs'#, require: 'phantomjs/poltergeist'
   gem 'database_cleaner'
 end
 

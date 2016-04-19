@@ -16,11 +16,6 @@ ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.javascript_driver = :poltergeist
 
-# Capybara.register_driver :poltergeist do |app|
-#   Capybara::Poltergeist::Driver.new(app, js_errors: false)
-# end
-
-# Capybara.default_max_wait_time = 5
 require File.join(File.dirname(__FILE__), 'support/database_cleaner')
 
 RSpec.configure do |config|
