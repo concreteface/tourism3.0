@@ -4,11 +4,12 @@ $(function() {
     var body = $(this).serializeArray()[4]['value']
     var attrId = $(this).serializeArray()[2]['value']
     var toAppend = $(this).parent().prev();
-    addComment(body, attrId, toAppend);
+    var toClear = gon.ids.indexOf(parseInt(attrId));
+    addComment(body, attrId, toAppend, toClear);
   });
 })
 
-var addComment = function(body, attraction, toAppend) {
+var addComment = function(body, attraction, append, clear) { 
   visitParams = {
     body: body,
     attraction_id: attraction,
@@ -23,8 +24,9 @@ var addComment = function(body, attraction, toAppend) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      toAppend.append("<div>" + gon.user.username + "</div>" + "<div>" + body + "</div>")
+      append.append("<div>" + gon.user.username + "</div>" + "<div>" + body + "</div>")
       body = '';
+      $('.c_form')[clear].reset();
     } else {
       alert('Write Something Before You Press That Button!')
     }

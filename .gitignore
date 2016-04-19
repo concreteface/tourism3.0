@@ -18,3 +18,4 @@ google_key.json
 /.project
 tester.js
 tester.rb
+/app/views/attractions/practice.html

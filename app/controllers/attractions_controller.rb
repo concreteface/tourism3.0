@@ -5,6 +5,7 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.order(created_at: :desc)
     if current_user
       gon.user = current_user
+      gon.ids = @attractions.pluck(:id)
       @visited_attractions = current_user.visited_attractions.pluck(:id)
     end
   end
