@@ -22,6 +22,9 @@
             </div>
             <div>
               <%= c.body %>
+              <% if current_user && c.user == current_user %>
+              <button name='delete_comment' class='delete tiny hollow button'>Delete</button>
+              <% end %>
             </div>
           <% end %>
         </div>

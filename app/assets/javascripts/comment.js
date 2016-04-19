@@ -24,7 +24,7 @@ var addComment = function(body, attraction, append, clear) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      append.append("<div>" + gon.user.username + "</div>" + "<div>" + body + "</div>")
+      append.append("<div>" + gon.user.username + "</div>" + "<div>" + body + "<button name='delete_comment' class='delete tiny hollow button'>Delete</button>" + "</div>" )
       body = '';
       $('.c_form')[clear].reset();
     } else {

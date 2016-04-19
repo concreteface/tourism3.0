@@ -10,6 +10,18 @@ class CommentsController < ApplicationController
     end
   end
 
+
+  def js_delete
+    binding.pry
+    # @comment = Comment.find_by(body: params[:body_string])
+    @comment = Comment.find(conditions: ["body=? and user=?", params[:body_string], current_user])
+    @comment.destroy
+    render json: {message: 'success'}
+  end
+
+
+  private
+
   def comment_params
     params.permit(:body, :attraction_id, :user_id)
   end

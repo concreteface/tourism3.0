@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :visits, only: [:create]
   resources :comments, only: [:create]
+  get 'comments/jsdelete', to: 'comments#js_delete'
 
 end
