@@ -4,6 +4,6 @@ $(document).ready(function() {
 
 $(function(event) {
   $('.show').click(function(event) {
-    $(this).parent().parent().find('.comment').show()
+    $(this).parent().parent().find('.comment').fadeIn(300)
   })
 })

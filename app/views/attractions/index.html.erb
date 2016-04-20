@@ -1,56 +1,60 @@
 <div class='small-12 large-6 float small-centered'>
-<h2>Places and Things</h2>
+  <h2>Tourism 3.0</h2>
 </div>
 <ul>
   <% @attractions.each do |a| %>
     <div class='small-12 large-6 float small-centered'>
+      <div>
+        <%= a.name %>
+      </div>
+      <div>
+        <%= link_to image_tag("#{a.photo_url}", size: '500x500'), a %>
+      </div>
+      <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
         <div>
-          <%= a.name %>
+          <button name="visited" class='visited small button'>Been There</button>
         </div>
-        <div>
-          <%= link_to image_tag("#{a.photo_url}", size: '500x500'), a %>
-        </div>
-        <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
+      <% end %>
+      <div class='comment'>
+        <% a.comments.each do |c| %>
           <div>
-            <button name="visited" class='visited small button'>Been There</button>
+            <%= c.user.username %>
+            <div class='hidden' id='<%= c.id %>'>
+            </div>
           </div>
-        <% end %>
-        <div class='comment'>
-          <% a.comments.each do |c| %>
-            <div>
-              <%= c.user.username %>
-              <div class='hidden' id='<%= c.id %>'>
-              </div>
-            </div>
-            <div>
-              <%= c.body %>
-              <% if current_user && c.user == current_user %>
+          <div>
+            <%= c.body %>
+            <% if current_user && c.user == current_user %>
               <button name='delete_comment' class='delete tiny hollow button'>Delete</button>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <% if user_signed_in? %>
-          <div class='comment'>
-            <%= form_tag("/comments", method: "post", class: 'c_form') do %>
-              <%= hidden_field_tag :attraction_id , a.id %>
-              <%= hidden_field_tag :user_id , current_user.id %>
-              <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
-              <%= submit_tag "Comment", class: 'tiny button' %>
             <% end %>
           </div>
-        <% else %>
-          <div class='comment'>
-            <h7>Sign in to Comment!</h7>
-          </div>
         <% end %>
-        <div>
-          <button name="show_comments" class='show small button'>Show Comments</button>
+      </div>
+      <% if user_signed_in? %>
+        <div class='comment'>
+          <%= form_tag("/comments", method: "post", class: 'c_form') do %>
+            <%= hidden_field_tag :attraction_id , a.id %>
+            <%= hidden_field_tag :user_id , current_user.id %>
+            <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
+            <%= submit_tag "Comment", class: 'tiny button' %>
+          <% end %>
         </div>
+      <% else %>
+        <div class='comment'>
+          <h7>Sign in to Comment!</h7>
+        </div>
+      <% end %>
+      <div>
+        <button name="show_comments" class='show small button'>Show Comments</button>
+      </div>
     </div>
   <% end %>
-  <%= paginate @attractions, :remote => true %>
 </ul>
+  <div class='row'>
+    <%= paginate @attractions %>
+  </div>
 <% if user_signed_in? %>
-  <%= link_to("Add Photo", new_attraction_path) %>
+  <div>
+    <%= link_to("Add Photo", new_attraction_path) %>
+  </div>
 <% end %>

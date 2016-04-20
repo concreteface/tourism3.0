@@ -1,16 +1,14 @@
-<div>
-  <img src="<%= @attraction.photo_url %>" height='700' width='700'>
-</div>
-<div>
-  <%= @attraction.name %>
-</div>
-<div>
-  <%= @attraction.description %>
-  <% if @attraction.creator == current_user %>
-  <%= link_to 'Edit', edit_attraction_path(@attraction) %>
-  <% end %>
-</div>
-<div>
-  <iframe width="600" height="450" frameborder="0" style="border:0" src='<%= @iframe_source %>' id='map' allowfullscreen></iframe>
+<div class='row'>
+  <div class='small-12 medium-8 large-6 columns'>
+    <img src="<%= @attraction.photo_url %>" height='700' width='700'>
+    <%= @attraction.name %>
+    <%= @attraction.description %>
+    <% if @attraction.creator == current_user %>
+      <%= link_to 'Edit', edit_attraction_path(@attraction) %>
+    <% end %>
+  </div>
+  <div>
+    <iframe width="600" height="450" frameborder="0" style="border:0" src='<%= @iframe_source %>' id='map' allowfullscreen></iframe>
+  </div>
 </div>
 <%= link_to("Main Page", root_path) %>

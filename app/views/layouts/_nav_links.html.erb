@@ -1,9 +1,41 @@
-<nav>
-  <% if user_signed_in? %>
-    <%= link_to current_user.username, user_path(current_user) %>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: 'DELETE', confirm: 'Are you sure?' %>
-  <% elsif !(current_page?(controller: 'devise/registrations', action: 'new') or current_page?(controller: 'devise/sessions', action: 'new')) %>
-    <%= link_to 'Sign in', new_user_session_path %>
-    <%= link_to 'Sign up', new_user_registration_path %>
-  <% end %>
-</nav>
+<div class="top-bar">
+  <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button class="menu-icon dark" type="button" data-toggle></button>
+    </span>
+    <strong>T3P0</strong>
+  </div>
+  <div id="responsive-menu">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <% if user_signed_in? %>
+          <li>
+            <a href="#">Menu</a>
+            <ul class="menu vertical">
+              <li><%= link_to 'Home', attractions_path %></li>
+              <li><%= link_to 'Profile', user_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: 'DELETE', confirm: 'Are you sure?' %></li>
+            </ul>
+          </li>
+        <% elsif !(current_page?(controller: 'devise/registrations', action: 'new') or current_page?(controller: 'devise/sessions', action: 'new')) %>
+          <li>
+            <a href="#">One</a>
+            <ul class="menu vertical">
+              <li><%= link_to 'Home', attractions_path %></li>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            </ul>
+          </li>
+        <% end %>
+        <!--      <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li> -->
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+  </div>
+</div>
