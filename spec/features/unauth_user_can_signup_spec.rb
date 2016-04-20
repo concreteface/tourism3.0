@@ -12,7 +12,7 @@ feature "unauthenticated user can create account" do
     fill_in 'Password confirmation', with: 'password'
     click_button 'Sign up'
 
-    expect(page).to have_content('yohoho')
+    # expect(page).to have_content('yohoho')
     expect(page).to have_content('Signed up successfully.')
     expect(page).to have_content('Sign Out')
     expect(page).not_to have_content('Log in')
