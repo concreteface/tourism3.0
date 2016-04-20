@@ -29,6 +29,7 @@ gem 'fog'
 gem 'carrierwave'
 gem 'gon'
 gem 'exifr'
+gem 'kaminari'
 
 
 

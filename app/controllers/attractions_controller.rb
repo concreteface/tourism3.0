@@ -2,7 +2,7 @@ class AttractionsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @attractions = Attraction.order(created_at: :desc)
+    @attractions = Attraction.order(created_at: :desc).page params[:page]
     if current_user
       gon.user = current_user
       @visited_attractions = current_user.visited_attractions.pluck(:id)

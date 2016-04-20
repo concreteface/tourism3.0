@@ -47,6 +47,7 @@
       
     </div>
   <% end %>
+  <%= paginate @attractions, :remote => true %>
 </ul>
 <% if user_signed_in? %>
   <%= link_to("Add Photo", new_attraction_path) %>
