@@ -15,7 +15,7 @@
             <button name="visited" class='visited small button'>Been There</button>
           </div>
         <% end %>
-        <div>
+        <div class='comment'>
           <% a.comments.each do |c| %>
             <div>
               <%= c.user.username %>
@@ -31,7 +31,7 @@
           <% end %>
         </div>
         <% if user_signed_in? %>
-          <div>
+          <div class='comment'>
             <%= form_tag("/comments", method: "post", class: 'c_form') do %>
               <%= hidden_field_tag :attraction_id , a.id %>
               <%= hidden_field_tag :user_id , current_user.id %>
@@ -40,11 +40,13 @@
             <% end %>
           </div>
         <% else %>
-          <div>
+          <div class='comment'>
             <h7>Sign in to Comment!</h7>
           </div>
         <% end %>
-      
+        <div>
+          <button name="show_comments" class='show small button'>Show Comments</button>
+        </div>
     </div>
   <% end %>
   <%= paginate @attractions, :remote => true %>
