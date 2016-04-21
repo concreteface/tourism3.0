@@ -8,7 +8,7 @@
         <%= a.name %>
       </div>
       <div>
-        <%= link_to image_tag("#{a.photo_url}", size: '500x500'), a %>
+        <%= link_to image_tag("#{a.photo_url}", size: '600x600'), a %>
       </div>
       <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
         <div>
@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <% if user_signed_in? %>
-        <div class='comment'>
+        <div class='comment large-11 columns'>
           <%= form_tag("/comments", method: "post", class: 'c_form') do %>
             <%= hidden_field_tag :attraction_id , a.id %>
             <%= hidden_field_tag :user_id , current_user.id %>

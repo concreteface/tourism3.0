@@ -1,15 +1,16 @@
-<%= form_for @attraction do |f| %>
-<div>
-<%= f.label :name %>
-<%= f.text_field :name %>
+<div class='small-12 medium-8 large-6 large-centered'>
+  <%= form_for @attraction do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+    <div class='actions'>
+      <%= f.submit "Submit", class: 'button'  %>
+      <%= link_to 'Cancel', :back, class: 'button' %>
+    </div>
+  <% end %>
 </div>
-<div>
-<%= f.label :description %>
-<%= f.text_field :description %>
-</div>
-<div class='actions'>
-<%= f.submit "Submit", class: 'button'  %>
-</div>
-<% end %>
-
-<%= link_to 'Cancel', :back, class: 'button' %>
