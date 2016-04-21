@@ -29,7 +29,7 @@ var addVisit = function(element) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      $(toRemove).hide(200, function() {
+      $(toRemove).fadeOut(200, function() {
         $(this).remove();
       });
     } else {
