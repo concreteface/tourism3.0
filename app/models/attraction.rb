@@ -35,5 +35,4 @@ class Attraction < ActiveRecord::Base
   def get_longitude(file_name)
     EXIFR::JPEG.new(file_name).gps.longitude rescue nil
   end
-
 end

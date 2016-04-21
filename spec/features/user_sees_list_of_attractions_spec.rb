@@ -5,8 +5,8 @@ feature 'unauthenticated user sees list of attractions at root path' do
   scenario 'user visits root path' do
     attraction1 = FactoryGirl.create(:attraction)
     attraction2 = FactoryGirl.create(:attraction)
-    attraction1.add_photo('test_photo.png')
-    attraction2.add_photo('test_photo.png')
+    attraction1.add_photo('test.jpg')
+    attraction2.add_photo('test.jpg')
 
     visit '/'
 

@@ -30,5 +30,8 @@
 
 #distance {
     width: 60px;
+}
 
+.search {
+    display: inline-block;
 }
