@@ -2,6 +2,8 @@ require 'exifr'
 
 class Attraction < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
 
   belongs_to :creator, class_name: "User", foreign_key: :creator_id
   has_many :visitors, class_name: 'User', through: :visits
@@ -33,4 +35,5 @@ class Attraction < ActiveRecord::Base
   def get_longitude(file_name)
     EXIFR::JPEG.new(file_name).gps.longitude rescue nil
   end
+
 end

@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem 'gon'
 gem 'exifr'
 gem 'kaminari'
+gem 'geocoder'
 
 
 

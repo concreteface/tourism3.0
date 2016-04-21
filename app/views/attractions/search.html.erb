@@ -1,0 +1,6 @@
+
+  <ul>
+    <% @search_results.each do |attraction| %>
+      <li><%= link_to attraction.name, attraction %></li>
+    <% end %>
+  </ul>

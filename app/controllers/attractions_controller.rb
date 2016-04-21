@@ -55,6 +55,15 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def search
+    @query = params[:query]
+    @distance = Integer(params[:distance]) rescue false
+    if !@distance
+      @distance = 10
+    end
+    @search_results = Attraction.near(@query, @distance)
+  end
+
   private
 
   def attraction_params
