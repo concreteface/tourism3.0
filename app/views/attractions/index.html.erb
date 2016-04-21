@@ -15,44 +15,13 @@
           <button name="visited" class='visited small button'>Been There</button>
         </div>
       <% end %>
-      <div class='comment'>
-        <% a.comments.each do |c| %>
-          <div>
-            <%= c.user.username %> says:
-            <div class='hidden' id='<%= c.id %>'>
-            </div>
-          </div>
-          <div>
-            <%= c.body %>
-            <% if current_user && c.user == current_user %>
-              <button name='delete_comment' class='delete tiny hollow button'>Delete</button>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <% if user_signed_in? %>
-        <div class='comment large-11 columns'>
-          <%= form_tag("/comments", method: "post", class: 'c_form') do %>
-            <%= hidden_field_tag :attraction_id , a.id %>
-            <%= hidden_field_tag :user_id , current_user.id %>
-            <%= text_field_tag :body, nil, placeholder: 'Leave a Comment', class: 'comm_body' %>
-            <%= submit_tag "Comment", class: 'tiny button' %>
-          <% end %>
-        </div>
-      <% else %>
-        <div class='comment'>
-          <h7>Sign in to Comment!</h7>
-        </div>
-      <% end %>
-      <div>
-        <button name="show_comments" class='show small button'>Show Comments</button>
-      </div>
+      <%= commontator_thread(a) %>
     </div>
   <% end %>
 </ul>
-  <div class='row'>
-    <%= paginate @attractions %>
-  </div>
+<div class='row'>
+  <%= paginate @attractions %>
+</div>
 <% if user_signed_in? %>
   <div>
     <%= link_to("Add Photo", new_attraction_path) %>

@@ -2,6 +2,14 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
+Rails.application.config.assets.precompile += %w( commontator/upvote_disabled.png )
+Rails.application.config.assets.precompile += %w( commontator/downvote_disabled.png )
+Rails.application.config.assets.precompile += %w( commontator/upvote_hover.png )
+Rails.application.config.assets.precompile += %w( commontator/upvote.png )
+Rails.application.config.assets.precompile += %w( commontator/downvote_hover.png )
+Rails.application.config.assets.precompile += %w( commontator/downvote.png )
+Rails.application.config.assets.precompile += %w( commontator/upvote_active.png )
+Rails.application.config.assets.precompile += %w( commontator/downvote_active.png )
 # Rails.application.config.assets.precompile += %w("#{Rails.root}/app/assets/javascripts/visit.js")
 
 # Add additional assets to the asset load path

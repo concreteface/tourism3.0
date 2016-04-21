@@ -4,6 +4,7 @@ class Attraction < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
+  acts_as_commontable
 
   belongs_to :creator, class_name: "User", foreign_key: :creator_id
   has_many :visitors, class_name: 'User', through: :visits

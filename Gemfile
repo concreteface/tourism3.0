@@ -31,6 +31,9 @@ gem 'gon'
 gem 'exifr'
 gem 'kaminari'
 gem 'geocoder'
+gem 'acts_as_votable'
+gem 'commontator'
+
 
 
 

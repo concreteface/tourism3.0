@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :visits, only: [:create]
   get 'comments/jsdelete', to: 'comments#js_delete'
   resources :comments, only: [:create]
+  mount Commontator::Engine => '/commontator'
   
 end

@@ -14,6 +14,7 @@ Warden.test_mode!
 
 ActiveRecord::Migration.maintain_test_schema!
 
+
 Capybara.javascript_driver = :poltergeist
 
 require File.join(File.dirname(__FILE__), 'support/database_cleaner')
