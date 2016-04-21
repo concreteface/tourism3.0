@@ -1,25 +1,26 @@
-
-<div>
-  <h4><%= @user.username %></h4>
-</div>
-<div>
-  <h4>
-    <%= @user.email %>
-  </h4>
-</div>
-<div>
-<h3>Stuff you added</h3>
-  <% @user.created_attractions.each do |a| %>
-    <div>
-     <%= link_to a.name, attraction_path(a) %>
-	</div>
-  <% end %>
-</div>
-<div>
-<h3>Stuff you've seen</h3>
-  <% @user.visited_attractions.each do |a| %>
-    <div>
-      <%= link_to a.name, attraction_path(a) %>
-	</div>
-  <% end %>
+<div class="row">
+  <div class='small-12 large-4 medium-4 columns'>
+    <h4><%= @user.username %></h4>
+    <h4>
+      <%= @user.email %>
+    </h4>
+  </div>
+  <div class='small-12 large-4 medium-4 columns'>
+    <h3>Things you've seen</h3>
+    <% @user.visited_attractions.each do |a| %>
+      <div class='row'>
+        <%= link_to a.name, attraction_path(a) %>
+        <img src="<%= a.photo_url %>" width=100>
+      </div>
+    <% end %>
+  </div>
+  <div class='small-12 large-4 medium-4 columns'>
+    <h3>Things you've added</h3>
+    <% @user.created_attractions.each do |a| %>
+      <div class='row'>
+        <%= link_to a.name, attraction_path(a) %>
+        <img src="<%= a.photo_url %>" width=100>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -14,17 +14,26 @@
       <div class>
         <%= render "layouts/nav_links" %>
       </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <div class="success callout small-8" data-closable>
+          <%= notice %>
+          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert callout small-8" data-closable>
+          <%= alert %>
+          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
-    
     <script>
-      $(function(){ $(document).foundation(); });
+      $(document).foundation();
     </script>
-<!--     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASqV0mtj-NdZmF-Za7tQzvshFkMtWfUIA&callback=initMap">
-    </script> -->
-
   </body>
 </html>

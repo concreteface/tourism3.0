@@ -9,7 +9,9 @@ feature 'authenticated user can add attraction' do
   scenario 'authenitcated user adds attraction photo, name and description' do
     login_as(@user)
     visit root_path
-    click_on 'Add Photo'
+    within('div.top-bar') do
+      click_on 'Add Photo'
+    end
 
     fill_in 'Name', with: "Gnome"
     fill_in 'Description', with: "An interesting statue somewhere"
@@ -25,7 +27,9 @@ feature 'authenticated user can add attraction' do
   scenario 'authenitcated user fills in form incorrectly' do
     login_as(@user)
     visit root_path
-    click_on 'Add Photo'
+    within('div.top-bar') do
+      click_on 'Add Photo'
+    end
 
     fill_in 'Description', with: "An interesting statue somewhere"
     attach_file :attraction_photo, "#{Rails.root}/gnome.jpg"
@@ -39,7 +43,7 @@ feature 'authenticated user can add attraction' do
 
   scenario 'unauthenticated user can\'t add attraction' do
     visit root_path
-    
+
     expect(page).not_to have_selector(:link, 'Add Photo')
 
     visit new_attraction_path

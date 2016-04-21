@@ -24,7 +24,7 @@ var addComment = function(body, attraction, append, clear) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      append.append("<div>" + gon.user.username + "<div class='hidden' id=" + data.id + "></div>"  + "</div>" + "<div>" + body + "<button name='delete_comment' class='delete tiny hollow button'>Delete</button>" + "</div>" )
+      append.append("<div>" + gon.user.username + " says:" + "<div class='hidden' id=" + data.id + "></div>"  + "</div>" + "<div>" + body + "<button name='delete_comment' class='delete tiny hollow button'>Delete</button>" + "</div>" )
       body = '';
       clear.val("");
     } else {

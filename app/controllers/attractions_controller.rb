@@ -18,7 +18,7 @@ class AttractionsController < ApplicationController
       @long = @attraction.longitude
       # gon.lat = @attraction.latitude
       # gon.long = @attraction.longitude
-      @iframe_source = "#{@base_url}?key=#{@key}&center=#{@lat},#{@long}&zoom=17"
+      @iframe_source = "#{@base_url}?key=#{@key}&center=#{@lat},#{@long}&zoom=18"
     else
       @iframe_source = "#{@base_url}?key=#{@key}&center=39.8282,-98.5795"
     end

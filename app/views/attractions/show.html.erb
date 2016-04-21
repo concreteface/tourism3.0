@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='show row'>
   <div class='small-12 medium-8 large-6 columns'>
     <img src="<%= @attraction.photo_url %>" height='700' width='700'>
     <%= @attraction.name %>
@@ -7,7 +7,7 @@
       <%= link_to 'Edit', edit_attraction_path(@attraction) %>
     <% end %>
   </div>
-  <div>
+  <div >
     <iframe width="600" height="450" frameborder="0" style="border:0" src='<%= @iframe_source %>' id='map' allowfullscreen></iframe>
   </div>
 </div>

@@ -15,3 +15,17 @@
  *= require foundation_and_overrides
 
  */
+
+.page {
+
+	display: inline-block;
+}
+
+.show {
+margin-top: 1em
+
+}
+
+.callout {
+	 margin: 0 auto;
+}
