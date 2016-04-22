@@ -33,6 +33,7 @@ gem 'kaminari'
 gem 'geocoder'
 gem 'acts_as_votable'
 gem 'commontator'
+gem 'mini_magick'
 
 
 

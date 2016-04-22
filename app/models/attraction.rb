@@ -1,6 +1,8 @@
 require 'exifr'
+require 'open-uri'
 
 class Attraction < ActiveRecord::Base
+  attr_accessor :address
   mount_uploader :photo, PhotoUploader
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
@@ -12,7 +14,7 @@ class Attraction < ActiveRecord::Base
   has_many :comments
   validates :name, presence: true, uniqueness: true
   validates :photo, presence: true
-  before_save :extract_geolocation
+  before_create :extract_geolocation
 
   def add_photo(file_location)
     File.open(file_location) do |file|
@@ -21,12 +23,18 @@ class Attraction < ActiveRecord::Base
     save!
   end
 
+  def add_remote_photo(url)
+    tmp_photo_file = nil
+    open('tmp_image.jpg', 'wb') do |file|
+      file << open(url).read
+    end
+    self.add_photo("#{Rails.root}/tmp_image.jpg")
+  end
+
   def extract_geolocation
     img = photo_url
-    if get_latitude(img) != nil
-      self.latitude = get_latitude(img)
-      self.longitude = get_longitude(img)
-    end
+    self.latitude = get_latitude(img)
+    self.longitude = get_longitude(img)
   end
 
   def get_latitude(file_name)
@@ -36,4 +44,6 @@ class Attraction < ActiveRecord::Base
   def get_longitude(file_name)
     EXIFR::JPEG.new(file_name).gps.longitude rescue nil
   end
+
+
 end

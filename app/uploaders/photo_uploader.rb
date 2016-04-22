@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 class PhotoUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
 
+  process :resize_to_fit => [1000, 1000]
 
-  if Rails.env.test? || Rails.env.development?
-    storage :file
-  else
+  unless Rails.env.test?
     storage :fog
   end
 
