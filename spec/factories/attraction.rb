@@ -3,6 +3,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "Cool Place #{n}" }
     description "It's been there a while"
     association :creator, factory: :user
-    before(:create){|attraction| attraction.add_photo('gnome.jpg')}
+    before(:create){|attraction| attraction.add_photo('test.jpg')}
   end
 end

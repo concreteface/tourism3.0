@@ -13,7 +13,7 @@ feature 'user can update photo title and description' do
 
     expect(page).to have_content("It's been there a while")
 
-    click_link 'Edit'
+    click_link 'detail_button'
     fill_in 'Description', with: "Someone fell there"
     click_button 'Submit'
 
@@ -24,7 +24,7 @@ feature 'user can update photo title and description' do
     login_as(@user2)
     visit attraction_path(@attraction)
 
-    expect(page).not_to have_selector(:link, 'Edit')
+    expect(page).not_to have_selector(:link, 'detail_button')
   end
 
   scenario 'user who submits invalid form' do
@@ -33,7 +33,7 @@ feature 'user can update photo title and description' do
 
     expect(page).to have_content("It's been there a while")
 
-    click_link 'Edit'
+    click_link 'detail_button'
     fill_in 'Name', with: ""
     click_button 'Submit'
 

@@ -11,7 +11,9 @@
     </div>
     <div class='row'>
       <% if @attraction.creator == current_user %>
-        <%= link_to 'Edit Picture Details', edit_attraction_path(@attraction) %>
+        <%= link_to 'Change Details', edit_attraction_path(@attraction), class: 'button', id: 'detail_button' %>
+        <a href="#" onclick="return launchEditor('editableimage1',
+    '<%= @attraction.photo_url %>');" class='button' id='edit_button'>Edit Photo</a>
       <% end %>
     </div>
   </div>
@@ -19,14 +21,13 @@
     <iframe width="600" height="450" frameborder="0" style="border:0" src='<%= @iframe_source %>' id='map' allowfullscreen></iframe>
   </div>
 </div>
-<!-- Load widget code -->
+
 <body data-env="<%= ENV['ADOBE_DEV_ID'] %>">
-  <!-- Instantiate the widget -->
+  
   <script type="text/javascript">
     var featherEditor = new Aviary.Feather({
             apiKey: '<%= ENV['ADOBE_DEV_ID'] %>',
-            tools:'color,sharpness,effects,lighting,color,focus,vignette,colorsplash',
-            onClose: function(isDirty){}, 
+            tools:'color,sharpness,effects,lighting,color,focus,vignette,colorsplash', 
             onSave: function(imageID, newURL) {
                var photoParams = {
               name: '<%= @attraction.name %>',
@@ -41,29 +42,22 @@
               })
                 var img = document.getElementById(imageID);
                 img.src = newURL;
-    
                 request.done(function(data){
                 	if (data.message == 'success'){
-                		console.log('cool')
+                		featherEditor.close();
                 	} else if (data.message == 'failure'){
-
-                		console.log('not cool')
+                		alert('Something went wrong')
                 	}
                 })
-            }
-            
+                return false;
+            } 
         });
-    
         function launchEditor(id, src) {
     
             featherEditor.launch({
                 image: id,
                 url: src
             });
-              // debugger;
             return false;
         }
   </script>
-  <a href="#" onclick="return launchEditor('editableimage1',
-    '<%= @attraction.photo_url %>');">Edit!</a>
-   <!-- <button id='edit_photo' class='button'>Edit</button> -->

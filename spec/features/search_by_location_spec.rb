@@ -4,7 +4,7 @@ feature 'user can enter an address and distance and find attractions' do
 
   before :each do
     @attraction = FactoryGirl.create(:attraction)
-    @attraction.add_photo('test.jpg')
+    # @attraction.add_photo('test.jpg')
     @user = FactoryGirl.create(:user)
   end
 
@@ -24,6 +24,8 @@ feature 'user can enter an address and distance and find attractions' do
     fill_in('query', with: 'Boston')
     fill_in('distance', with: '100000000')
     click_button 'Search'
+
+    expect(page).to have_content(@attraction.name)
   end
 
   scenario 'user enters search terms that don\'t include attractions' do

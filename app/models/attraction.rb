@@ -24,7 +24,6 @@ class Attraction < ActiveRecord::Base
   end
 
   def add_remote_photo(url)
-    tmp_photo_file = nil
     open('tmp_image.jpg', 'wb') do |file|
       file << open(url).read
     end
@@ -44,6 +43,5 @@ class Attraction < ActiveRecord::Base
   def get_longitude(file_name)
     EXIFR::JPEG.new(file_name).gps.longitude rescue nil
   end
-
 
 end

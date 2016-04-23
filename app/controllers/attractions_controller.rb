@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :search]
 
   def index
     @attractions = Attraction.order(created_at: :desc).page params[:page]
@@ -44,7 +44,6 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    binding.pry
     @attraction = Attraction.find(params[:id])
     if @attraction.update(attraction_params)
       flash[:notice] = 'You updated your photo details'
