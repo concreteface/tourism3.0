@@ -10,7 +10,7 @@
       <%= @attraction.description %>
     </div>
     <div class='row'>
-      <% if @attraction.creator == current_user %>
+      <% if @attraction.creator && @attraction.creator == current_user %>
         <%= link_to 'Change Details', edit_attraction_path(@attraction), class: 'button', id: 'detail_button' %>
         <a href="#" onclick="return launchEditor('editableimage1',
     '<%= @attraction.photo_url %>');" class='button' id='edit_button'>Edit Photo</a>
@@ -27,7 +27,7 @@
   <script type="text/javascript">
     var featherEditor = new Aviary.Feather({
             apiKey: '<%= ENV['ADOBE_DEV_ID'] %>',
-            tools:'color,sharpness,effects,lighting,color,focus,vignette,colorsplash', 
+            tools:'color,sharpness,effects,lighting,color,focus,vignette,colorsplash',
             onSave: function(imageID, newURL) {
                var photoParams = {
               name: '<%= @attraction.name %>',
@@ -53,7 +53,6 @@
             } 
         });
         function launchEditor(id, src) {
-    
             featherEditor.launch({
                 image: id,
                 url: src
@@ -61,3 +60,5 @@
             return false;
         }
   </script>
+
+  
