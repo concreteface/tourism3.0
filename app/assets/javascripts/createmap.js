@@ -67,8 +67,6 @@ var createMap = function initMap() {
 
 $(document).on('click', '#update_loc', function(event) {
   event.preventDefault();
-  console.log($('#latitude').val())
-  console.log($('#longitude').val())
   var locationParams = {
     latitude: $('#latitude').val(),
     longitude: $('#longitude').val(),

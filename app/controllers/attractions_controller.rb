@@ -96,6 +96,6 @@ class AttractionsController < ApplicationController
   private
 
   def attraction_params
-    params.require(:attraction).permit(:name, :photo, :description, :latitude, :longitude)
+    params.require(:attraction).permit(:name, :photo, :description)
   end
 end
