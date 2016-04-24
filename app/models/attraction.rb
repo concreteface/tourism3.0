@@ -51,7 +51,6 @@ class Attraction < ActiveRecord::Base
     save!
   end
 
-
   def set_longitude(long)
     self.longitude = long
     save!

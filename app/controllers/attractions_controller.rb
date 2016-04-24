@@ -15,6 +15,7 @@ class AttractionsController < ApplicationController
     @key = ENV['MAPS_KEY']
     @adobe_key = ENV['ADOBE_DEV_ID']
     @base_url = 'https://www.google.com/maps/embed/v1/place'
+    gon.id = @attraction.id
     if @attraction.latitude && @attraction.longitude
       @lat = @attraction.latitude
       @long = @attraction.longitude
@@ -77,6 +78,15 @@ class AttractionsController < ApplicationController
   def update_photo
     @attraction = Attraction.find(params[:id])
     if  @attraction.add_remote_photo(params[:url_to_save])
+      render json: {message: 'success'}
+    else
+      render json: {message: 'failure'}
+    end
+  end
+
+  def update_location
+    @attraction = Attraction.find(params[:id])
+    if @attraction.set_latitude(params[:latitude]) && @attraction.set_longitude(params[:longitude])
       render json: {message: 'success'}
     else
       render json: {message: 'failure'}

@@ -1,5 +1,5 @@
 $(document).ready(function(event) {
-  // event.preventDefault()
+
   $.getScript(gon.url, function() {
     createMap();
   });
@@ -64,3 +64,27 @@ var createMap = function initMap() {
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 };
+
+$(document).on('click', '#update_loc', function(event) {
+  event.preventDefault();
+  console.log($('#latitude').val())
+  console.log($('#longitude').val())
+  var locationParams = {
+    latitude: $('#latitude').val(),
+    longitude: $('#longitude').val(),
+    id: gon.id
+  }
+  var request = $.ajax({
+    method: 'put',
+    url: '/attractions/update_location',
+    data: locationParams
+  });
+
+  request.done(function(data) {
+    if (data.message == 'success') {
+      alert('You updated the location.')
+    } else if (data.message == 'failure') {
+      alert('Something went wrong. Contace site administrator.')
+    }
+  });
+});
