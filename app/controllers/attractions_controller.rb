@@ -66,7 +66,7 @@ class AttractionsController < ApplicationController
     if !@distance
       @distance = 10
     end
-    @search_results = Attraction.near(@query, @distance)
+    @search_results = Attraction.near(@query, @distance).page params[:page]
   end
 
   def update_photo
