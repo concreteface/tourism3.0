@@ -39,25 +39,30 @@
 
 .show {
     margin: 0 auto;
+    height: 100%;
 }
 
 .logo {
-	color: white;
-	font: italic bold 12px/30px Georgia, serif;
+    color: white;
+    font: italic bold 12px/30px Georgia, serif;
 }
 
 .vert-cent {
-vertical-align: middle;
+    vertical-align: middle;
 }
 
 .tb-v-align {
-	margin-top: 15px;
+    margin-top: 15px;
 }
 
 .top-bar-title {
-	margin-top: 21px;
+    margin-top: 21px;
 }
 
 .search-vert {
-	margin-top: 14px;
+    margin-top: 14px;
+}
+
+#jsMap {
+    height: 75%;
 }
