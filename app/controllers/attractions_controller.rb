@@ -16,7 +16,7 @@ class AttractionsController < ApplicationController
     @adobe_key = ENV['ADOBE_DEV_ID']
     @base_url = 'https://www.google.com/maps/embed/v1/place'
     gon.id = @attraction.id
-    if @attraction.latitude && @attraction.longitude
+    if @attraction.latitude
       @lat = @attraction.latitude
       @long = @attraction.longitude
       gon.lat = @lat
