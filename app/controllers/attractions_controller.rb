@@ -14,16 +14,11 @@ class AttractionsController < ApplicationController
     gon.url = "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_KEY']}&callback=initMap"
     @key = ENV['MAPS_KEY']
     @adobe_key = ENV['ADOBE_DEV_ID']
-    @base_url = 'https://www.google.com/maps/embed/v1/place'
     gon.id = @attraction.id
-    if @attraction.latitude
-      @lat = @attraction.latitude
-      @long = @attraction.longitude
-      gon.lat = @lat
-      gon.long = @long
-      @iframe_source = "#{@base_url}?key=#{@key}&q=#{@lat},#{@long}&zoom=18"
+    if @attraction.latitude && @attraction.longitude
+      gon.lat = @attraction.latitude
+      gon.long = @attraction.longitude
     else
-      @iframe_source = "#{@base_url}?key=#{@key}&q=39.8282,-98.5795"
       gon.lat = 39.8282
       gon.long = -98.5795
     end

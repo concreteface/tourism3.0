@@ -5,7 +5,7 @@ class Attraction < ActiveRecord::Base
   attr_accessor :address
   mount_uploader :photo, PhotoUploader
   reverse_geocoded_by :latitude, :longitude
-  before_validation :reverse_geocode
+  after_validation :reverse_geocode
   acts_as_commontable
 
   belongs_to :creator, class_name: "User", foreign_key: :creator_id
@@ -14,8 +14,8 @@ class Attraction < ActiveRecord::Base
   has_many :comments
   validates :name, presence: true, uniqueness: true
   validates :photo, presence: true
-  validates :latitude, numericality: true, allow_blank: true
-  validates :longitude, numericality: true, allow_blank: true
+  validates :latitude, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }, allow_blank: true
+  validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, allow_blank: true
   before_create :extract_geolocation
 
   def add_photo(file_location)

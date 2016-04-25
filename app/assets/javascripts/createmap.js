@@ -27,7 +27,6 @@ var createMap = function initMap() {
       position: latLng,
       map: map,
       draggable: true
-
     });
     geocoder.geocode({
       'latLng': latLng
