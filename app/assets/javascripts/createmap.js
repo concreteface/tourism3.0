@@ -1,3 +1,5 @@
+var setLat;
+var setLng;
 $(document).ready(function(event) {
 
   $.getScript(gon.url, function() {
@@ -51,8 +53,8 @@ var createMap = function initMap() {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
             $('#address').val(results[0].formatted_address);
-            $('#latitude').val(marker.getPosition().lat());
-            $('#longitude').val(marker.getPosition().lng());
+           setLat = $('#latitude').val(marker.getPosition().lat());
+           setLng = $('#longitude').val(marker.getPosition().lng());
             infowindow.setContent(results[0].formatted_address);
             infowindow.open(map, marker);
           }
@@ -65,10 +67,11 @@ var createMap = function initMap() {
 };
 
 $(document).on('click', '#update_loc', function(event) {
+	debugger;
   event.preventDefault();
   var locationParams = {
-    latitude: $('#latitude').val(),
-    longitude: $('#longitude').val(),
+    latitude: setLat.val(),
+    longitude: setLng.val(),
     id: gon.id
   }
   var request = $.ajax({
