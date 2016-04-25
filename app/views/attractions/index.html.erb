@@ -10,7 +10,7 @@
           <%= a.name %>
           <%= link_to image_tag("#{a.photo_url}", size: '900x900'), a %>
           <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
-            <button name="visited" class='visited small button' id='<%= a.id %>'>Been There</button>
+            <button name="visited" class='visitb small button' id='<%= a.id %>'>Been There</button>
             <%= image_tag('badge.jpg', size: '100x60', class: 'hidden')%>
           <% elsif user_signed_in? && @visited_attractions.include?(a.id) %>
             <%= image_tag('badge.jpg', size: '100x60')%>
