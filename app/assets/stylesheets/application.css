@@ -40,6 +40,7 @@
 .show {
     margin: 0 auto;
     height: 100%;
+    padding-top: 15px
 }
 
 .logo {
@@ -64,7 +65,7 @@
 }
 
 #jsMap {
-    height: 50%;
+    height: 60%;
 }
 
 #index-center {

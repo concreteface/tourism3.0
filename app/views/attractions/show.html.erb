@@ -10,7 +10,7 @@
       <%= @attraction.description %>
     </div>
     <div class='row'>
-      <% if @attraction.creator && @attraction.creator == current_user %>
+      <% if (@attraction.creator && @attraction.creator == current_user) || (current_user && current_user.admin?) %>
         <%= link_to 'Change Details', edit_attraction_path(@attraction), class: 'button', id: 'detail_button' %>
         <a href="#" onclick="return launchEditor('editableimage1',
     '<%= @attraction.photo_url %>');" class='button hide-for-small-only' id='edit_button'>Edit Photo</a>
@@ -21,9 +21,9 @@
   </div>
   <div class='small-12 medium-6 large-6 columns show'>
     <div id="jsMap"></div>
-    <input id="address" type="text" style="width:600px;"/>
-    <input type="text" id="latitude" placeholder="Latitude"/>
-    <input type="text" id="longitude" placeholder="Longitude"/>
+    <input id="address" type="text" class='hide' style="width:600px;"/>
+    <input type="text" id="latitude" placeholder="Latitude" class='hide'/>
+    <input type="text" id="longitude" placeholder="Longitude" class='hide'/>
   </div>
 </div>
 <body data-env="<%= ENV['ADOBE_DEV_ID'] %>">

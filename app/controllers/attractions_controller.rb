@@ -42,7 +42,7 @@ class AttractionsController < ApplicationController
 
   def edit
     @attraction = Attraction.find(params[:id])
-    unless current_user == @attraction.creator
+    unless current_user == @attraction.creator || current_user.admin?
       flash[:alert] = "You don't have access to that page!"
       redirect_to attraction_path(@attraction)
       return
