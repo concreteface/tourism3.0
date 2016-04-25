@@ -1,26 +1,21 @@
 $(function() {
+  $(".hidden").hide();
   $('.visited').click(function(event) {
     event.preventDefault();
     addVisit(this);
   });
 })
 
-var getAttractionId = function(input) {
-  var str = $(input).parent().siblings()[1].innerHTML
-  var reg = /\/\d+\//;
-  var array = reg.exec(str)
-  return (array[0].split('/')[1])
-}
-
 var addVisit = function(element) {
   var toRemove = element
-  var attractionId = getAttractionId(element);
+  var insertAfter = $(element).parent().prev()
+  var toShow = $(element).next()
+  var attractionId = $(element).attr('id');
   var userId = gon.user.id;
   var visitParams = {
     user_id: userId,
     attraction_id: attractionId
   };
-
   var request = $.ajax({
     method: 'POST',
     url: '/visits',
@@ -29,9 +24,8 @@ var addVisit = function(element) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      $(toRemove).fadeOut(200, function() {
-        $(this).remove();
-      });
+      $(toRemove).remove()
+      $(toShow).fadeIn(200)
     } else {
       alert('Something went wrong...contact site administrator.')
     }

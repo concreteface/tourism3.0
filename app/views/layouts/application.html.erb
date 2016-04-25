@@ -13,18 +13,13 @@
     
       <div class>
         <div class="top-bar">
-          <div class="top-bar-title ">
-            <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-              <button class="menu-icon dark" type="button" data-toggle></button>
-            </span>
-            <strong>T3P0</strong>
-          </div>
+
           <div id="responsive-menu">
             <div class="small-4 columns tb-v-align">
               <ul class="dropdown menu" data-dropdown-menu>
                 <% if user_signed_in? %>
                   <li>
-                    <a href="#">Menu</a>
+                    <a href="#"><%= image_tag('road_icon.jpg', size: '40x40') %></a>
                     <ul class="menu vertical">
                       <li><%= link_to 'Home', attractions_path %></li>
                       <li><%= link_to 'Profile', user_path(current_user) %></li>

@@ -1,28 +1,39 @@
-<div class='small-12 large-6 medium-8 float small-centered large-centered'>
-</div>
-<ul>
-  <% @attractions.each do |a| %>
-    <div class='small-12 large-6 medium-8 float small-centered'>
-      <div>
-        <%= a.name %>
-      </div>
-      <div>
-        <%= link_to image_tag("#{a.photo_url}", size: '600x600'), a %>
-      </div>
-      <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
-        <div>
-          <button name="visited" class='visited small button'>Been There</button>
+<div class='row index-row'>
+  <div class='large-1 medium-2 small-12 columns'>
+  &nbsp;
+    
+  </div>
+  <div class='large-10 medium-9 small-12 columns'>
+    <ul>
+      <% @attractions.each do |a| %>
+        <div class='callout'>
+          <%= a.name %>
+       
+          <%= link_to image_tag("#{a.photo_url}", size: '900x900'), a %>
+       
+        <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
+         
+            <button name="visited" class='visited small button' id='<%= a.id %>'>Been There</button>
+            <%= image_tag('badge.jpg', size: '100x60', class: 'hidden')%>
+        
+        <% elsif user_signed_in? && @visited_attractions.include?(a.id) %>
+          <%= image_tag('badge.jpg', size: '100x60')%>
+        <% end %>
+        <%= commontator_thread(a) %>
         </div>
       <% end %>
-      <%= commontator_thread(a) %>
+    </ul>
+    <div class='row'>
+      <%= paginate @attractions %>
     </div>
-  <% end %>
-</ul>
-<div class='row'>
-  <%= paginate @attractions %>
-</div>
-<% if user_signed_in? %>
-  <div>
-    <%= link_to("Add Photo", new_attraction_path) %>
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to("Add Photo", new_attraction_path) %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class='large-1 medium-1 small-12 columns'>
+  &nbsp;
+    
+  </div>
+</div>

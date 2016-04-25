@@ -52,7 +52,7 @@
 }
 
 .tb-v-align {
-    margin-top: 15px;
+    margin-top: 18px;
 }
 
 .top-bar-title {
@@ -65,4 +65,18 @@
 
 #jsMap {
     height: 50%;
+}
+
+#index-center {
+    background-color: #e6e6ff;
+}
+
+.index-row {
+    text-align: center;
+}
+
+.index-side {
+    background-color: #990000;
+    height: 100%;
+    content: "";
 }

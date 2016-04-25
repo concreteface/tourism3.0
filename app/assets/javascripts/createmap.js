@@ -1,6 +1,6 @@
-var setLat;
-var setLng;
 $(document).ready(function(event) {
+  var setLat;
+  var setLng;
 
   $.getScript(gon.url, function() {
     createMap();
@@ -67,7 +67,6 @@ var createMap = function initMap() {
 };
 
 $(document).on('click', '#update_loc', function(event) {
-	debugger;
   event.preventDefault();
   var locationParams = {
     latitude: setLat.val(),

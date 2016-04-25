@@ -2,34 +2,35 @@
 [![Code Climate](https://codeclimate.com/github/concreteface/tourism3.0/badges/gpa.svg)](https://codeclimate.com/github/concreteface/tourism3.0)
 [![Coverage Status](https://coveralls.io/repos/github/concreteface/tourism3.0/badge.svg?branch=master)](https://coveralls.io/github/concreteface/tourism3.0?branch=master)
 
-[Track my progress...if you dare.](http://t3p0.herokuapp.com/)
+[Sidestreeter on Heroku](http://t3p0.herokuapp.com/)
 
+# Sidestreeter
+---
+___
+## Description
+___
+This application is intended for sharing photos of off-the-beaten-track "tourist attractions." Things you won't find in a guidebook. There is a lot of great stuff out there that the world needs to see. Let's start sharing it.
 
-== README
+## Technical Details
+___
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To build and run:
 
-Things you may want to cover:
+- change to desired directory
+- `git clone https://github.com/concreteface/tourism3.0.git`
+- `bundle install`
+- `rake db:create`
+- `rake db:migrate`
+- run `rails s`
+- visit `localhost:3000`
 
-* Ruby version
+That's it!
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- Built using Ruby version 2.2.3.
+- Uses Postgres database accessed with ActiveRecord.
+- Cloud storage (Google in this case) through Carrierwave is used for photo storage.
+- All uploads are automatically geocoded with the Geocoder gem.
+- EXIF data is extracted automatically using Exifr.
+- Comments use Commontator and Acts_as_votable gems.
+- Pagination is achieved with Kaminari.
+- Additional geocoding done with Google Maps (the update location feature).
