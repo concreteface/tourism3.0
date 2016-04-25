@@ -11,7 +11,7 @@ feature 'user can create a visit by clicking a button', js: true do
     login_as(@user)
     visit '/'
     click_button 'Been There'
-
+    page.reset!
     expect(page).not_to have_button('Been There')
   end
 

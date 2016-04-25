@@ -1,6 +1,6 @@
 <div class='row index-row'>
   <div class='large-1 medium-2 small-12 columns'>
-  &nbsp;
+    &nbsp;
     
   </div>
   <div class='large-10 medium-9 small-12 columns'>
@@ -8,18 +8,14 @@
       <% @attractions.each do |a| %>
         <div class='callout'>
           <%= a.name %>
-       
           <%= link_to image_tag("#{a.photo_url}", size: '900x900'), a %>
-       
-        <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
-         
+          <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
             <button name="visited" class='visited small button' id='<%= a.id %>'>Been There</button>
             <%= image_tag('badge.jpg', size: '100x60', class: 'hidden')%>
-        
-        <% elsif user_signed_in? && @visited_attractions.include?(a.id) %>
-          <%= image_tag('badge.jpg', size: '100x60')%>
-        <% end %>
-        <%= commontator_thread(a) %>
+          <% elsif user_signed_in? && @visited_attractions.include?(a.id) %>
+            <%= image_tag('badge.jpg', size: '100x60')%>
+          <% end %>
+          <%= commontator_thread(a) %>
         </div>
       <% end %>
     </ul>
@@ -33,7 +29,7 @@
     <% end %>
   </div>
   <div class='large-1 medium-1 small-12 columns'>
-  &nbsp;
+    &nbsp;
     
   </div>
 </div>
