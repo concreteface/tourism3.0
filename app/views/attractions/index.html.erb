@@ -1,3 +1,4 @@
+<% content_for :title, "Sidestreeter homepage" %>
 <div class='row index-row'>
   <div class='large-1 medium-2 small-12 columns'>
     &nbsp;
@@ -7,7 +8,7 @@
     <ul>
       <% @attractions.each do |a| %>
         <div class='callout'>
-          <%= a.name %>
+          <div><h2><%= a.name %></h2></div>
           <%= link_to image_tag("#{a.photo_url}", size: '900x900'), a %>
           <% if user_signed_in? && !@visited_attractions.include?(a.id) %>
             <button name="visited" class='visitb small button' id='<%= a.id %>'>Been There</button>

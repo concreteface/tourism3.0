@@ -8,7 +8,6 @@ $(function() {
 
 var addVisit = function(element) {
   var toRemove = element
-  var insertAfter = $(element).parent().prev()
   var toShow = $(element).next()
   var attractionId = $(element).attr('id');
   var userId = gon.user.id;
