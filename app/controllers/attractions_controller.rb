@@ -73,7 +73,7 @@ class AttractionsController < ApplicationController
   def update_photo
     @attraction = Attraction.find(params[:id])
     if  @attraction.add_remote_photo(params[:url_to_save])
-      render json: {message: 'success'}
+      render json: {message: 'success', url: @attraction.photo_url}
     else
       render json: {message: 'failure'}
     end
