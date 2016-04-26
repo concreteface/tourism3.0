@@ -81,3 +81,17 @@
     height: 100%;
     content: "";
 }
+
+.user-show {
+
+    background-color: #990000;
+    height: 100%;
+}
+
+.reveal-modal-inner {
+    margin: 0 auto;
+    position: relative;
+    max-width: 950px;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
