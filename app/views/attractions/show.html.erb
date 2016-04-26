@@ -32,7 +32,7 @@
   <script type="text/javascript">
     var featherEditor = new Aviary.Feather({
         apiKey: '<%= ENV['ADOBE_DEV_ID'] %>',
-        tools:'color,sharpness,effects,lighting,color,focus,vignette,colorsplash',
+        tools:'color,sharpness,effects,lighting,color,focus,vignette,colorsplash,orientation',
         onSave: function(imageID, newURL) {
            var photoParams = {
           name: '<%= @attraction.name %>',
