@@ -28,9 +28,9 @@ That's it!
 
 - Built using Ruby version 2.2.3.
 - Uses Postgres database accessed with ActiveRecord.
-- Cloud storage (Google in this case) through Carrierwave is used for photo storage.
-- All uploads are automatically geocoded with the Geocoder gem.
-- EXIF data is extracted automatically using Exifr.
-- Comments use Commontator and Acts_as_votable gems.
-- Pagination is achieved with Kaminari.
+- Cloud storage (Google in this case) through carrierwave is used for photo storage.
+- All uploads are automatically geocoded with the geocoder gem.
+- EXIF data is extracted automatically using exifr.
+- Comments use commontator and acts_as_votable gems.
+- Pagination is achieved with kaminari.
 - Additional geocoding done with Google Maps (the update location feature).
