@@ -89,8 +89,8 @@
     margin: 0 auto;
     position: relative;
     max-width: 950px;
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    /*-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);*/
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.4);*/
 }
 
 .top-margin {
