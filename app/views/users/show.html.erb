@@ -1,9 +1,10 @@
 <% content_for :title, "Sidestreeter #{@user.username}" %>
 <div class="row">
   <div class='small-12 large-4 medium-4 columns'>
-    <h4><%= @user.username %></h4>
+     <h4>
+     Username: <%= @user.username %></h4>
     <h4>
-      <%= @user.email %>
+      Email: <%= @user.email %>
     </h4>
     <%= link_to "Change your password", edit_user_registration_path %>
   </div>
