@@ -19,3 +19,5 @@ google_key.json
 tester.js
 tester.rb
 /app/views/attractions/practice.html
+tmp_image.jpg
+public/assets/**
