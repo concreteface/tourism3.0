@@ -16,6 +16,7 @@
       </div>
       <div>
         <%= link_to image_tag("#{a.photo_url}", size: '100x100'), a %>
+        <button name="not-visited" class='not-visited small button' id='<%= a.id %>'>Nevermind</button>
       </div>
     <% end %>
   </div>
