@@ -1,14 +1,14 @@
 $(document).on('click', '.not-visited', function(event) {
   event.preventDefault();
-  // debugger;
   attrId = $(this).attr('id')
-  pDelete = $(this).parent()
-  tDelete = $(this).parent().prev()
-  cancelVisit(attrId, pDelete, tDelete);
+  bDelete = $(this).parent()
+  pDelete = $(this).parent().prev()
+  tDelete = $(this).parent().prev().prev()
+  cancelVisit(attrId, pDelete, tDelete, bDelete);
 })
 
 
-var cancelVisit = function(visitId, photo, title) {
+var cancelVisit = function(visitId, photo, title, button) {
 
   var cancelParams = {
     user_id: gon.id
@@ -22,8 +22,9 @@ var cancelVisit = function(visitId, photo, title) {
 
   request.done(function(data) {
     if (data.message == 'success') {
-      photo.remove()
-      title.remove()
+      button.fadeOut(200)
+      photo.fadeOut(200)
+      title.fadeOut(200)
     } else {
       alert('Something went wrong. Contact site administrator.')
     }
