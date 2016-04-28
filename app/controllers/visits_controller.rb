@@ -4,7 +4,7 @@ class VisitsController < ApplicationController
     @visit = Visit.new(visit_params)
     if @visit.save
       render json: {message: 'success'}
-      VisitMailer.new_visit(@visit).deliver_later
+      # VisitMailer.new_visit(@visit).deliver_later
     else
       render json: {message: 'failure'}
     end

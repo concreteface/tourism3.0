@@ -1,38 +1,52 @@
 <% content_for :title, "Sidestreeter #{@user.username}" %>
-<div class="row">
-  <div class='small-12 large-4 medium-4 columns'>
-     <h4>
-     Username: <%= @user.username %></h4>
-    <h4>
-      Email: <%= @user.email %>
-    </h4>
-    <%= link_to "Change your password", edit_user_registration_path %>
+<div class="row collapse">
+  <div class="medium-3 columns">
+    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
+      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Your Places</a></li>
+      <li class="tabs-title"><a href="#panel2v">Your Visits</a></li>
+      <li class="tabs-title"><a href="#panel3v">Update Information</a></li>
+    </ul>
   </div>
-  <div class='small-12 large-4 medium-4 columns index-row'>
-    <h3>Your badges</h3>
-    <% @user.visited_attractions.each do |a| %>
-      <div class='row'>
-        <%= link_to a.name, attraction_path(a) %>
+  <div class="medium-9 columns">
+    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+      <div class="tabs-panel is-active row" id="panel1v">
+        <% @user.created_attractions.each do |a| %>
+          <div class='small-4 columns'>
+            <div>
+              <%= link_to a.name, attraction_path(a) %>
+            </div>
+            <div>
+              <%= link_to image_tag("#{a.photo_url}", size: '100x100'), a %>
+            </div>
+            <div>
+              Visitors: <%= a.visits.count %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div>
-        <%= link_to image_tag("#{a.photo_url}", size: '100x100'), a %>
+      <div class="tabs-panel row" id="panel2v">
+        <% @user.visited_attractions.each do |a| %>
+          <div class='small-4 columns centered'>
+            <div>
+              <%= link_to a.name, attraction_path(a) %>
+            </div>
+            <div>
+              <%= link_to image_tag("#{a.photo_url}", size: '100x100'), a %>
+            </div>
+            <div>
+              <button name="not-visited" class='not-visited tiny button' id='<%= a.id %>'>Nevermind</button>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div>
-        <button name="not-visited" class='not-visited small button' id='<%= a.id %>'>Nevermind</button>
+      <div class="tabs-panel" id="panel3v">
+        <h4>
+          Username: <%= @user.username %></h4>
+        <h4>
+          Email: <%= @user.email %>
+        </h4>
+        <%= link_to "Update", edit_user_registration_path %>
       </div>
-    <% end %>
-  </div>
-  <div class='small-12 large-4 medium-4 columns index-row'>
-    <h3>Your photos</h3>
-    <div class='show'>
-      <% @user.created_attractions.each do |a| %>
-        <div>
-          <%= link_to a.name, attraction_path(a) %>
-        </div>
-        <div>
-          <%= link_to image_tag("#{a.photo_url}", size: '100x100'), a %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
