@@ -32,5 +32,18 @@ RSpec.describe Attraction, type: :model do
         expect(attraction.longitude).to eq(138.86029052777778)
       end
     end
+
+    describe '#set_latitude' do
+      it 'sets the latitude' do
+        attraction.set_latitude(38.0)
+        expect(attraction.latitude).to eq(38.0)
+      end
+    end
+    describe '#set_longitude' do
+      it 'sets the longitude' do
+        attraction.set_longitude(160.0)
+        expect(attraction.longitude).to eq(160.0)
+      end
+    end
   end
 end

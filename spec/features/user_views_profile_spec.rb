@@ -21,4 +21,12 @@ feature 'user sees visited, created and commented attractions' do
     expect(page).to have_link(@visited2.name)
     expect(page).to have_link(@visited3.name)
   end
+
+  scenario 'unauth user tries to visit other user\'s profile page' do
+    login_as(@visited1.creator)
+    visit "/users/#{@user.id}"
+
+    expect(page).to have_content('You don\'t have access to that page!')
+
+  end
 end

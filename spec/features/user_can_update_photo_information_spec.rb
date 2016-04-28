@@ -27,6 +27,13 @@ feature 'user can update photo title and description' do
     expect(page).not_to have_selector(:link, 'detail_button')
   end
 
+  scenario 'unauth user tries to edit photo' do
+    login_as(@user2)
+    visit edit_attraction_path(@attraction)
+
+    expect(page).to have_content('You don\'t have access to that page!')
+  end
+
   scenario 'user who submits invalid form' do
     login_as(@user)
     visit attraction_path(@attraction)
@@ -39,4 +46,5 @@ feature 'user can update photo title and description' do
 
     expect(page).to have_content("Name can't be blank")
   end
+
 end
