@@ -3,8 +3,8 @@
   <div class='small-12 medium-6 large-6 columns'>
     <div class='row'><img src="<%= @attraction.photo_url %>" height='700' width='700' id="editableimage1" ></div>
     <div class='row'>
-      <div class='small-6'><strong>Name:</strong></div>
-      <div class='small-6'><p><a data-toggle="photomodal"><%= @attraction.name %></a></p></div>
+      <div class='small-2 names'><strong>Name:</strong></div>
+      <div class='small-6 names'><p><a data-toggle="photomodal"><%= @attraction.name %></a></p></div>
       </div>
       <div class="full reveal" id="photomodal" data-reveal>
         <p><%= @attraction.name %></p>
@@ -13,7 +13,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    
+
     <div class='row'>
       <strong>Description:</strong>
       <%= @attraction.description %>
@@ -53,10 +53,10 @@
                 data: photoParams
               })
                 var img = document.getElementById(imageID);
-                img.src = newURL; 
+                img.src = newURL;
                 request.done(function(data){
                   if (data.message == 'success'){
-                    $('#photomodal').children()[1].innerHTML = "<img src='" + data.url + "'>" 
+                    $('#photomodal').children()[1].innerHTML = "<img src='" + data.url + "'>"
                     featherEditor.close();
                   } else if (data.message == 'failure'){
                     console.log('Something went wrong')
