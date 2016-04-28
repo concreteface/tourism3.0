@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :visit do
-    association :user, factory: :user
-    association :attraction, factory: :attraction
+    association :visitor, factory: :user
+    association :visited_attraction, factory: :attraction
   end
 end
