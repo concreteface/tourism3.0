@@ -100,3 +100,8 @@
 .names {
   display: inline-block;
 }
+
+.about {
+ margin-top: auto;
+ margin-bottom: auto;
+}

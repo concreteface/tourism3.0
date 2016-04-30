@@ -34,6 +34,7 @@ gem 'geocoder'
 gem 'acts_as_votable'
 gem 'commontator'
 gem 'mini_magick'
+gem 'high_voltage'
 
 
 
@@ -74,4 +75,3 @@ end
 
 gem 'rails_12factor', group: :production
 ruby "2.2.3"
-

@@ -10,10 +10,8 @@
     <%= include_gon(init: true) %>
   </head>
   <body>
-    
       <div class>
         <div class="top-bar">
-
           <div id="responsive-menu">
             <div class="small-4 columns tb-v-align">
               <ul class="dropdown menu" data-dropdown-menu>
@@ -25,6 +23,7 @@
                       <li><%= link_to 'Profile', user_path(current_user) %></li>
                       <li><%= link_to("Add Photo", new_attraction_path) %></li>
                       <li><%= link_to 'Sign Out', destroy_user_session_path, method: 'DELETE', confirm: 'Are you sure?' %></li>
+                      <li><%= link_to 'About', page_path('about') %></li>
                     </ul>
                   </li>
                 <% else  %>
@@ -34,6 +33,7 @@
                       <li><%= link_to 'Home', attractions_path %></li>
                       <li><%= link_to 'Sign in', new_user_session_path %></li>
                       <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                      <li><%= link_to 'About', page_path('about') %></li>
                     </ul>
                   </li>
                 <% end %>
@@ -75,7 +75,7 @@
         </div>
       <% end %>
       <%= yield %>
-    
+
     <script>
       $(document).foundation();
     </script>
