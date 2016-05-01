@@ -14,7 +14,7 @@ class VisitsController < ApplicationController
     @visit = Visit.find_by(user_id: params[:user_id], attraction_id: params[:id])
     @visit.delete
     render json: { message: "success" }
-  rescue ActiveRecord::DeleteRestrictionError
+  rescue NoMethodError
     render json: { message: "failure" }
   end
 

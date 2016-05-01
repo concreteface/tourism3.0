@@ -11,7 +11,6 @@
   <% unless @search_results == [] %>
   <div class='small-12 large-4 medium-4 columns callout'>
     <div class='row'>
-
       <% @search_results.each do |attraction| %>
         <div class='small-6 columns'>
           <%= link_to attraction.name, attraction %><br>
