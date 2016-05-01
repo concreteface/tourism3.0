@@ -1,11 +1,17 @@
 <% content_for :title, "Sidestreeter search" %>
 <div class='row'>
   <div class='small-12 large-4 medium-4 columns'>
+    <% if @search_results == [] %>
+    <h4>No results within <%= @distance %> miles of <%= @query %>.</h4>
+    <% else %>
   <h4>Results within <%= @distance %> miles of <%= @query %>:</h4>
+  <% end %>
     &nbsp;
   </div>
-  <div class='small-12 large-4 medium-4 columns'>
+  <% unless @search_results == [] %>
+  <div class='small-12 large-4 medium-4 columns callout'>
     <div class='row'>
+
       <% @search_results.each do |attraction| %>
         <div class='small-6 columns'>
           <%= link_to attraction.name, attraction %><br>
@@ -15,10 +21,10 @@
         </div>
       <% end %>
       <%= paginate @search_results %>
+      <% end %>
     </div>
   </div>
   <div class='small-12 large-4 medium-4 columns'>
     &nbsp;
   </div>
 </div>
-
