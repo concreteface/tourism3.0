@@ -2,7 +2,7 @@
 <div class="row collapse">
   <div class='medium-1 columns'>
     <h4><%= @user.username %></h4>
-    <img src="<%= @user.avatar.url %>" id='editableimage2'>
+    <img src="<%= @user.avatar.url %>" id='editableimage2' height='100' width='100'>
     <a href="#" onclick="return launchEditor('editableimage2',
     '<%= @user.avatar_url %>');" class='tiny button hide-for-small-only' id='edit_button'>Edit Avatar</a>
   </div>
@@ -62,7 +62,7 @@
   <script type="text/javascript">
     var featherEditor = new Aviary.Feather({
             apiKey: '<%= ENV['ADOBE_DEV_ID'] %>',
-            // tools:'color,sharpness,effects,lighting,focus,vignette,colorsplash,orientation',
+            tools:'enhance,frames,stickers,orientation,crop,resize,color,vignette,blemish,whiten,redeye,draw,colorsplash,text,meme',
             onSave: function(imageID, newURL) {
                var photoParams = {
               username: '<%= @user.username %>',
