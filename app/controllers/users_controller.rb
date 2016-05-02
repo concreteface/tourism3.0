@@ -10,4 +10,13 @@ class UsersController < ApplicationController
       return
     end
   end
+
+  def update_photo
+    @user = User.find(params[:id])
+    if  @user.add_remote_avatar(params[:url_to_save])
+      render json: {message: 'success', url: @user.avatar_url}
+    else
+      render json: {message: 'failure'}
+    end
+  end
 end

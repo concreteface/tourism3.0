@@ -3,6 +3,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process :resize_to_fit => [1000, 1000]
 
+  version :thumb do
+    process :resize_to_fit => [50, 50]
+  end
+
   unless Rails.env.test?
     storage :fog
   end

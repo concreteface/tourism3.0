@@ -64,8 +64,8 @@ Commontator.configure do |config|
   #            view.commontator_gravatar_image_tag(
   #              user, 1, :s => 60, :d => 'mm') }
   config.user_avatar_proc = lambda { |user, view|
-                                     view.commontator_gravatar_image_tag(
-                                       user, 1, :s => 60, :d => 'mm') }
+    view.image_tag(
+  user.avatar_url, :alt => user.username, :border => 1) }
 
   # user_email_proc
   # Type: Proc
@@ -221,7 +221,7 @@ Commontator.configure do |config|
   # Default: lambda { |thread|
   #                   "no-reply@#{Rails.application.class.parent.to_s.downcase}.com" }
   config.email_from_proc = lambda { |thread|
-    "no-reply@#{Rails.application.class.parent.to_s.downcase}.com" }
+  "no-reply@#{Rails.application.class.parent.to_s.downcase}.com" }
 
   # commontable_name_proc
   # Type: Proc
@@ -232,7 +232,7 @@ Commontator.configure do |config|
   # Default: lambda { |thread|
   #                   "#{thread.commontable.class.name} ##{thread.commontable.id}" }
   config.commontable_name_proc = lambda { |thread|
-    "#{thread.commontable.class.name} ##{thread.commontable.id}" }
+  "#{thread.commontable.class.name} ##{thread.commontable.id}" }
 
   # comment_url_proc
   # Type: Proc
@@ -246,7 +246,7 @@ Commontator.configure do |config|
   #                                              anchor: "comment_#{comment.id}_div") }
   # (defaults to the commontable's show url with an anchor pointing to the comment's div)
   config.comment_url_proc = lambda { |comment, app_routes|
-    app_routes.polymorphic_url(comment.thread.commontable, anchor: "comment_#{comment.id}_div") }
+  app_routes.polymorphic_url(comment.thread.commontable, anchor: "comment_#{comment.id}_div") }
 
   # mentions_enabled
   # Type: Boolean
@@ -276,5 +276,5 @@ Commontator.configure do |config|
   # Default: lambda { |current_user, query|
   #                   current_user.class.where('username LIKE ?', "#{query}%") }
   config.user_mentions_proc = lambda { |current_user, query|
-    current_user.class.where('username LIKE ?', "#{query}%") }
+  current_user.class.where('username LIKE ?', "#{query}%") }
 end

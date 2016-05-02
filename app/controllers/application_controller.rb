@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in)        << :username
     devise_parameter_sanitizer.for(:sign_up)        << :username
     devise_parameter_sanitizer.for(:account_update) << :username
+    devise_parameter_sanitizer.for(:account_update) << :avatar
+    devise_parameter_sanitizer.for(:sign_up) << :avatar
   end
 
   # def configure_permitted_parameters

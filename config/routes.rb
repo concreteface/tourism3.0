@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   put '/attractions/update_photo', to: 'attractions#update_photo'
   put '/attractions/update_location', to: 'attractions#update_location'
 
+  put '/users/update_photo', to: 'users#update_photo'
   resources :users, only: [:show]
   resources :attractions
   resources :visits, only: [:create, :destroy]

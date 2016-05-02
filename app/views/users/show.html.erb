@@ -1,6 +1,12 @@
 <% content_for :title, "Sidestreeter #{@user.username}" %>
 <div class="row collapse">
-  <div class="medium-3 columns">
+  <div class='medium-1 columns'>
+    <h4><%= @user.username %></h4>
+    <img src="<%= @user.avatar.url %>" id='editableimage2'>
+    <a href="#" onclick="return launchEditor('editableimage2',
+    '<%= @user.avatar_url %>');" class='tiny button hide-for-small-only' id='edit_button'>Edit Avatar</a>
+  </div>
+  <div class="medium-2 columns">
     <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
       <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Your Places</a></li>
       <li class="tabs-title"><a href="#panel2v">Your Visits</a></li>
@@ -50,3 +56,43 @@
     </div>
   </div>
 </div>
+
+<body data-env="<%= ENV['ADOBE_DEV_ID'] %>">
+  <script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+  <script type="text/javascript">
+    var featherEditor = new Aviary.Feather({
+            apiKey: '<%= ENV['ADOBE_DEV_ID'] %>',
+            // tools:'color,sharpness,effects,lighting,focus,vignette,colorsplash,orientation',
+            onSave: function(imageID, newURL) {
+               var photoParams = {
+              username: '<%= @user.username %>',
+              email: '<%= @user.email %>',
+              url_to_save: newURL,
+              id: '<%= @user.id %>'
+            };
+              var request = $.ajax({
+                method: 'put',
+                url: '/users/update_photo',
+                data: photoParams
+              })
+                var img = document.getElementById(imageID);
+                img.src = newURL;
+                request.done(function(data){
+                  if (data.message == 'success'){
+                    // $('#photomodal').children()[1].innerHTML = "<img src='" + data.url + "'>"
+                    featherEditor.close();
+                  } else if (data.message == 'failure'){
+                    console.log('Something went wrong')
+                  }
+                })
+                return false;
+            }
+        });
+        function launchEditor(id, src) {
+            featherEditor.launch({
+                image: id,
+                url: src
+            });
+            return false;
+        }
+  </script>

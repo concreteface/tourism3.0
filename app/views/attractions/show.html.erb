@@ -32,6 +32,9 @@
     <input id="address" type="text" class='hide' style="width:600px;"/>
     <input type="text" id="latitude" placeholder="Latitude" class='hide'/>
     <input type="text" id="longitude" placeholder="Longitude" class='hide'/>
+    <% if current_user && current_user = @attraction.creator %>
+    <h6>Drag pin and click 'Set Location' to update.</h6>
+    <% end %>
   </div>
 </div>
 <body data-env="<%= ENV['ADOBE_DEV_ID'] %>">
