@@ -65,7 +65,7 @@ Commontator.configure do |config|
   #              user, 1, :s => 60, :d => 'mm') }
   config.user_avatar_proc = lambda { |user, view|
     view.image_tag(
-  user.avatar_url, :alt => user.username, :border => 1) }
+  user.avatar_url, alt: user.username, border: 1, size: '100x100') }
 
   # user_email_proc
   # Type: Proc
