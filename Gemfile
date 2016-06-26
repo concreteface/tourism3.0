@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
+gem 'rake','11.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -35,6 +36,7 @@ gem 'acts_as_votable'
 gem 'commontator'
 gem 'mini_magick'
 gem 'high_voltage'
+gem 'httparty'
 
 
 
