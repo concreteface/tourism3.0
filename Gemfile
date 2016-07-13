@@ -37,6 +37,7 @@ gem 'commontator'
 gem 'mini_magick'
 gem 'high_voltage'
 gem 'httparty'
+gem "active_model_serializers"
 
 
 

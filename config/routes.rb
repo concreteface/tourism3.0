@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :visits, only: [:create, :destroy]
 
   namespace :api do
-    resources :attractions
+  	namespace :v1 do
+    resources :attractions, only: [:index]
+  end
   end
 
 end
