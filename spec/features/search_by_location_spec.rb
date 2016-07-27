@@ -4,7 +4,6 @@ feature 'user can enter an address and distance and find attractions' do
 
   before :each do
     @attraction = FactoryGirl.create(:attraction)
-    # @attraction.add_photo('test.jpg')
     @user = FactoryGirl.create(:user)
   end
 

@@ -11,7 +11,7 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
-    gon.url = "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_KEY']}&callback=initMap"
+    gon.url = "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_KEY']}"
     @key = ENV['MAPS_KEY']
     @adobe_key = ENV['ADOBE_DEV_ID']
     gon.id = @attraction.id

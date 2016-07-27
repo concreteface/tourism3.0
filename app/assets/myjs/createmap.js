@@ -4,6 +4,7 @@ $(document).ready(function(event) {
 
   $.getScript(gon.url, function() {
     createMap();
+    debugger;
   });
 
 })
@@ -83,7 +84,7 @@ $(document).on('click', '#update_loc', function(event) {
     if (data.message == 'success') {
       alert('You updated the location.')
     } else if (data.message == 'failure') {
-      alert('Something went wrong. Contace site administrator.')
+      alert('Something went wrong. Contact site administrator.')
     }
   });
 });

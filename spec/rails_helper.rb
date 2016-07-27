@@ -6,7 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 
 require 'capybara/rails'
-require 'capybara/poltergeist'
+# require 'capybara/poltergeist'
 require 'database_cleaner'
 
 include Warden::Test::Helpers
@@ -25,4 +25,3 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 end
-
