@@ -2,10 +2,10 @@ import React from 'react';
 import Attraction from './Attraction';
 
 const AttractionList = props => {
-let attractions = props.attractions.map(attraction => {
+let attractions = props.attractions.map((attraction, index) => {
   return (
     <Attraction
-      key={attraction.id}
+      key={index}
       name={attraction.name}
       url={attraction.photo.photo.url}
     />
